@@ -116,3 +116,32 @@ margin: 0 20px;
 cursor: pointer;
 transition : 0.5s;
 }
+
+.thumb li:hover
+{
+   transform: translateY(-15px);
+}
+.thumb li img
+{
+  max-width: 100px;
+}
+ sci{
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+ .sci li
+ {
+   list-style: none;
+ }
+ .sci li a
+ {
+   display: inline-block;
+   margin: 5px 0;
+   transform: scale(0.6);
+ }

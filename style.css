@@ -31,7 +31,7 @@ header{
 header .logo
 {
   position: relative;
-  max-width: 80px;
+  max-width: 200px;
 }
 
 header ul
@@ -48,6 +48,7 @@ header ul li a {
   font-weight: 400;
   margin-left: 40px;
   text-decoration: none;
+  font-size: 18px;
 }
 
 .content{
@@ -68,6 +69,7 @@ header ul li a {
  font-size: 4em;
  line-height: 1.4em;
  font-weigth: 500;
+ padding-top: 200px;
 }
 content .textBox h2 span
 {
@@ -81,13 +83,14 @@ content .textBox h2 span
 .content .textBox a{
   display: inline-block;
   margin-top: 20px;
-  padding: 8px 20px;
+  padding: 20px 25px;
   background: #017143;
   color: #fff;
   border-radius: 40px;
   font-weight: 500;
   letter-spacing: 1px;
   text-decoration: none;
+  font-size: 18px;
 }
 
 .content:imgBox
@@ -105,7 +108,7 @@ content .textBox h2 span
 .thumb{
   position: absolute;
   left: 50%;
-  bottom: 20px;
+  bottom: -100px;
   transform: translateX(-50%);
   display: flex;
 }
@@ -115,6 +118,7 @@ display: inline-block;
 margin: 0 20px;
 cursor: pointer;
 transition : 0.5s;
+margin-bottom: 60px
 }
 
 .thumb li:hover
@@ -144,6 +148,7 @@ transition : 0.5s;
    display: inline-block;
    margin: 5px 0;
    transform: scale(0.6);
+   margin-right: -60px;
  }
 
 
@@ -154,5 +159,5 @@ transition : 0.5s;
   width: 100%;
   height: 100%;
   background: #017143;
-  clip-path: circle(600px at right 800px);
+  clip-path: circle(550px at right 800px);
 }

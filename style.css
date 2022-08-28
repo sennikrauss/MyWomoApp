@@ -58,3 +58,14 @@ header ul li a {
   align-items: center;
 }
 
+.content .textBox
+{
+  position: relative;
+  max-width: 600px;
+}
+.content .textBox h2{
+ color: #333;
+ font-size: 4em;
+ line-height: 1.4em;
+ font-weigth: 500;
+}

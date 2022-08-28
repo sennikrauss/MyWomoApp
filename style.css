@@ -89,3 +89,15 @@ content .textBox h2 span
   letter-spacing: 1px;
   text-decoration: none;
 }
+
+.content:imgBox
+ {
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+ }
+.content .imBox img{
+  max-width: 340px;
+}

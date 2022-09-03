@@ -396,3 +396,11 @@ form.sign-in-form {
   opacity: 0;
   z-index: 1;
 }
+
+.container.sign-up-mode .left-panel {
+  pointer-events: none;
+}
+
+.container.sign-up-mode .right-panel {
+  pointer-events: all;
+}

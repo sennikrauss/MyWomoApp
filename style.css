@@ -45,6 +45,7 @@ header ul
 header ul li{
   list-style: none;
 }
+
 header ul li a {
   display: inline-block;
   color:#333;
@@ -52,13 +53,11 @@ header ul li a {
   margin-left: 40px;
   text-decoration: none;
   font-size: 18px;
-    width: 100%
-
 }
 
 .content{
-  width: 100%
   position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +75,7 @@ header ul li a {
  font-weigth: 500;
  padding-top: 200px;
 }
-.content .textBox h2 span
+content .textBox h2 span
 {
   color: #017143;
   font-size: 1.2 em;

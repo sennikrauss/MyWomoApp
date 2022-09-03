@@ -377,3 +377,8 @@ form.sign-in-form {
 .container.sign-up-mode .left-panel .content {
   transform: translateX(-800px);
 }
+
+.container.sign-up-mode .right-panel .image,
+.container.sign-up-mode .right-panel .content {
+  transform: translateX(0%);
+}

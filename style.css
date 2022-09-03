@@ -41,6 +41,7 @@ header ul
   position: relative;
   display: flex;
 }
+
 header ul li{
   list-style: none;
 }
@@ -51,11 +52,13 @@ header ul li a {
   margin-left: 40px;
   text-decoration: none;
   font-size: 18px;
+    width: 100%
+
 }
 
 .content{
+  width: 100%
   position: relative;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

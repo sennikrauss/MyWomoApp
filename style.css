@@ -546,6 +546,7 @@ form.sign-in-form {
   height: auto;
   width: 400px;
   max-width: 100%;
+  margin-left: -100px;
 }
 
 .text{
@@ -562,12 +563,16 @@ form.sign-in-form {
   flex-wrap: wrap;
   align-items; center;
   justify-content: space-around;
+  margin-right: 0px;
 }
+
 .text h1{
   color: #ffcc74;
   font-size: 85px;
   margin-bottom: 20px;
   text-transform: capitalize;
+    margin-right: 0px;
+
 }
 
 .text h5{

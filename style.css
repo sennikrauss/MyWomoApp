@@ -21,7 +21,7 @@ section
 }
 header{
    position:absolute;
-   top: 0;
+   top: -0.05px;
    left: 0;
    width: 100%;
    padding: 20px 100px;
@@ -61,7 +61,9 @@ header ul li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 80px;
 }
+
 
 .content .textBox
 {
@@ -75,7 +77,7 @@ header ul li a {
  font-weigth: 500;
  padding-top: 200px;
 }
-content .textBox h2 span
+.content .textBox h2 span
 {
   color: #017143;
   font-size: 1.2 em;
@@ -123,6 +125,8 @@ margin: 0 20px;
 cursor: pointer;
 transition : 0.5s;
 margin-bottom: 60px
+margin-left: -5000%;
+
 }
 
 .thumb li:hover

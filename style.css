@@ -334,7 +334,7 @@ form.sign-in-form {
   padding: 3rem 12% 2rem 17%;
 }
 
-.panel .content {
+.panel .firstcontent {
   color: #fff;
   transition: transform 0.9s ease-in-out;
   transition-delay: 0.6s;
@@ -362,7 +362,7 @@ form.sign-in-form {
 }
 
 .right-panel .image,
-.right-panel .content {
+.right-panel .firstcontent {
   transform: translateX(800px);
 }
 
@@ -374,12 +374,12 @@ form.sign-in-form {
 }
 
 .container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.container.sign-up-mode .left-panel .firstcontent {
   transform: translateX(-800px);
 }
 
 .container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.container.sign-up-mode .right-panel .firstcontent {
   transform: translateX(0%);
 }
 
@@ -450,7 +450,7 @@ form.sign-in-form {
     transition-delay: 0.6s;
   }
 
-  .panel .content {
+  .panel .firstcontent {
     padding-right: 15%;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.8s;
@@ -489,17 +489,17 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode .left-panel .image,
-  .container.sign-up-mode .left-panel .content {
+  .container.sign-up-mode .left-panel .firstcontent {
     transform: translateY(-300px);
   }
 
   .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
+  .container.sign-up-mode .right-panel .firstcontent {
     transform: translateY(0px);
   }
 
   .right-panel .image,
-  .right-panel .content {
+  .right-panel .firstcontent {
     transform: translateY(300px);
   }
 
@@ -517,7 +517,7 @@ form.sign-in-form {
   .image {
     display: none;
   }
-  .panel .content {
+  .panel .firstcontent {
     padding: 0.5rem 1rem;
   }
   .container {
@@ -550,12 +550,15 @@ form.sign-in-form {
   width: 400px;
   max-width: 100%;
   margin-left: -100px;
+  margin-top: 100px;
+
 }
 
 .text{
   width: 550px;
   max-width: 100%;
   padding: 0 10px;
+  margin-top: 100px;
 }
 
 .test{
@@ -609,6 +612,8 @@ form.sign-in-form {
   .text h1{
     font-size: 60px;
     margin-bottom: 25px;
+    margin-top: -50px;
+
   }
 
 }

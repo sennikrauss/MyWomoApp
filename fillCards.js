@@ -84,4 +84,16 @@ function createCard(card) {
     inputOfFormForDeletePlace.setAttribute('type', "hidden");
     formForDeletePlace.appendChild(inputOfFormForDeletePlace);
 
+  let buttonOfFormForDeletePlace = document.createElement('button');
+  buttonOfFormForDeletePlace.className = "btn btn-light";
+  buttonOfFormForDeletePlace.setAttribute("type", "submit");
+  buttonOfFormForDeletePlace.setAttribute("id", "deleteCard");
+  buttonOfFormForDeletePlace.setAttribute("name", "deletedCard");
+  let imageOfButtonOfFormForDeleteJournal = document.createElement('i');
+  imageOfButtonOfFormForDeleteJournal.className = "bi bi-trash";
+  imageOfButtonOfFormForDeleteJournal.style.color = "red";
+  buttonOfFormForDeletePlace.appendChild(imageOfButtonOfFormForDeleteJournal);
+  formForDeletePlace.appendChild(buttonOfFormForDeletePlace);
+
+  divCardBody.appendChild(formForDeletePlace);
 }

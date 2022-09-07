@@ -19,4 +19,7 @@ function createCard(card) {
   divCardBgLight.appendChild(image);
   divCardColumnsFluid.appendChild(divCardBgLight);
 
+  let divCardBody = document.createElement('div');
+    divCardBody.className = 'card-body';
+    divCardBgLight.appendChild(divCardBody);
 }

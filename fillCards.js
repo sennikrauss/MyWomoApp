@@ -33,8 +33,28 @@ function createCard(card) {
     cardTitle.appendChild(cardTitleBold);
 
     let hrLine = document.createElement('hr');
-      divCardBody.appendChild(hrLine);
+    divCardBody.appendChild(hrLine);
 
       divCardBody.appendChild(cardTitle);
+
+     let cardText = document.createElement('p');
+    cardText.className = "card-text";
+    cardText.innerHTML = card.Adresse + "<br />" + card.Plz + " "+card.Ort;
+    divCardBody.appendChild(cardText);
+
+     let aToForm = document.createElement('a');
+      aToForm.setAttribute('href', 'form.php?id='+card.id);
+      aToForm.className = "btn btn-secondary";
+      aToForm.textContent = "Full Details";
+      divCardBody.appendChild(aToForm);
+
+
+      let formForOpenJournal = document.createElement('form');
+      formForOpenJournal.setAttribute('id', "openJournal");
+      formForOpenJournal.setAttribute('action', "");
+      formForOpenJournal.setAttribute('method', "get");
+      formForOpenJournal.style.display = "inline";
+      divCardBody.appendChild(formForOpenJournal);
+
 
 }

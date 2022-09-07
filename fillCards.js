@@ -71,4 +71,17 @@ function createCard(card) {
   buttonOfFormForOpenJournal.appendChild(imageOfButtonOfFormForOpenJournal);
   formForOpenJournal.appendChild(buttonOfFormForOpenJournal);
 
+    let formForDeletePlace = document.createElement('form');
+    formForDeletePlace.setAttribute('action', "cards.php");
+    formForDeletePlace.setAttribute('method', "post");
+    formForDeletePlace.style.display = "inline-block";
+    formForDeletePlace.style.position = "absolute";
+    formForDeletePlace.style.right = "0";
+
+    let inputOfFormForDeletePlace = document.createElement('input');
+    inputOfFormForDeletePlace.setAttribute('name', "id");
+    inputOfFormForDeletePlace.value = card.id;
+    inputOfFormForDeletePlace.setAttribute('type', "hidden");
+    formForDeletePlace.appendChild(inputOfFormForDeletePlace);
+
 }

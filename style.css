@@ -21,7 +21,7 @@ section
 }
 header{
    position:absolute;
-   top: 0;
+   top: -0.05px;
    left: 0;
    width: 100%;
    padding: 20px 100px;
@@ -61,7 +61,9 @@ header ul li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 80px;
 }
+
 
 .content .textBox
 {
@@ -75,9 +77,9 @@ header ul li a {
  font-weigth: 500;
  padding-top: 200px;
 }
-content .textBox h2 span
+.content .textBox h2 span
 {
-  color: #017143;
+  color: #FAAFA0;
   font-size: 1.2 em;
   font-weigth: 900;
 }
@@ -88,7 +90,7 @@ content .textBox h2 span
   display: inline-block;
   margin-top: 20px;
   padding: 20px 25px;
-  background: #017143;
+  background: #FA9D8E;
   color: #fff;
   border-radius: 40px;
   font-weight: 500;
@@ -123,6 +125,8 @@ margin: 0 20px;
 cursor: pointer;
 transition : 0.5s;
 margin-bottom: 60px
+margin-left: -5000%;
+
 }
 
 .thumb li:hover
@@ -162,7 +166,7 @@ margin-bottom: 60px
   left: 0;
   width: 100%;
   height: 100%;
-  background: #017143;
+  background: #F8B7AD;
   clip-path: circle(550px at right 800px);
 }
 
@@ -230,7 +234,7 @@ form.sign-in-form {
 .input-field {
   max-width: 380px;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: #DCDCDC;
   margin: 10px 0;
   height: 55px;
   border-radius: 55px;
@@ -265,7 +269,7 @@ form.sign-in-form {
 
 .btn {
   width: 150px;
-  background-color: #5995fd;
+  background-color: #FA9D8E;
   border: none;
   outline: none;
   height: 49px;
@@ -299,7 +303,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #9E87BA 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, #FA9375 0%, #9250F0 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -330,7 +334,7 @@ form.sign-in-form {
   padding: 3rem 12% 2rem 17%;
 }
 
-.panel .content {
+.panel .firstcontent {
   color: #fff;
   transition: transform 0.9s ease-in-out;
   transition-delay: 0.6s;
@@ -358,10 +362,13 @@ form.sign-in-form {
 }
 
 .right-panel .image,
-.right-panel .content {
+.right-panel .firstcontent {
   transform: translateX(800px);
 }
 
+#backBtn {
+ margin-right: -20000px;
+}
 /* Login ANIMATION */
 
 .container.sign-up-mode:before {
@@ -370,12 +377,12 @@ form.sign-in-form {
 }
 
 .container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.container.sign-up-mode .left-panel .firstcontent {
   transform: translateX(-800px);
 }
 
 .container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.container.sign-up-mode .right-panel .firstcontent {
   transform: translateX(0%);
 }
 
@@ -446,7 +453,7 @@ form.sign-in-form {
     transition-delay: 0.6s;
   }
 
-  .panel .content {
+  .panel .firstcontent {
     padding-right: 15%;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.8s;
@@ -485,17 +492,17 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode .left-panel .image,
-  .container.sign-up-mode .left-panel .content {
+  .container.sign-up-mode .left-panel .firstcontent {
     transform: translateY(-300px);
   }
 
   .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
+  .container.sign-up-mode .right-panel .firstcontent {
     transform: translateY(0px);
   }
 
   .right-panel .image,
-  .right-panel .content {
+  .right-panel .firstcontent {
     transform: translateY(300px);
   }
 
@@ -513,7 +520,7 @@ form.sign-in-form {
   .image {
     display: none;
   }
-  .panel .content {
+  .panel .firstcontent {
     padding: 0.5rem 1rem;
   }
   .container {
@@ -536,7 +543,6 @@ form.sign-in-form {
 .about{
   width: 100%;
   height: 100vh;
-  background-color: #385875 ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -547,12 +553,15 @@ form.sign-in-form {
   width: 400px;
   max-width: 100%;
   margin-left: -100px;
+  margin-top: 100px;
+
 }
 
 .text{
   width: 550px;
   max-width: 100%;
   padding: 0 10px;
+  margin-top: 100px;
 }
 
 .test{
@@ -571,12 +580,10 @@ form.sign-in-form {
   font-size: 85px;
   margin-bottom: 20px;
   text-transform: capitalize;
-    margin-right: 0px;
-
+  margin-right: 0px;
 }
 
 .text h5{
- color: white;
  font-size: 25px;
  margin-bottom 25px;
  text-transform: capitalize;
@@ -608,6 +615,8 @@ form.sign-in-form {
   .text h1{
     font-size: 60px;
     margin-bottom: 25px;
+    margin-top: -50px;
+
   }
 
 }

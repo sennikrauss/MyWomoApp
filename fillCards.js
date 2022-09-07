@@ -1,3 +1,4 @@
+
 function createCard(card) {
   let divColLg6 = document.createElement('div');
   divColLg6.className = 'col-lg-6';
@@ -19,42 +20,43 @@ function createCard(card) {
   divCardBgLight.appendChild(image);
   divCardColumnsFluid.appendChild(divCardBgLight);
 
-    let divCardBody = document.createElement('div');
-    divCardBody.className = 'card-body';
-    divCardBgLight.appendChild(divCardBody);
+  let divCardBody = document.createElement('div');
+  divCardBody.className = 'card-body';
+  divCardBgLight.appendChild(divCardBody);
 
-    let cardTitle = document.createElement('h5');
-    cardTitle.className = "card-title";
-    cardTitle.style.textOverflow = "ellipsis";
-    cardTitle.style.overflow = "hidden";
-    cardTitle.style.whiteSpace = "nowrap";
-    let cardTitleBold = document.createElement('b');
-    cardTitleBold.innerText = card.Name;
-    cardTitle.appendChild(cardTitleBold);
-
-    let hrLine = document.createElement('hr');
-    divCardBody.appendChild(hrLine);
-
-      divCardBody.appendChild(cardTitle);
-
-     let cardText = document.createElement('p');
-    cardText.className = "card-text";
-    cardText.innerHTML = card.Adresse + "<br />" + card.Plz + " "+card.Ort;
-    divCardBody.appendChild(cardText);
-
-     let aToForm = document.createElement('a');
-      aToForm.setAttribute('href', 'form.php?id='+card.id);
-      aToForm.className = "btn btn-secondary";
-      aToForm.textContent = "Full Details";
-      divCardBody.appendChild(aToForm);
+  let cardTitle = document.createElement('h5');
+  cardTitle.className = "card-title";
+  cardTitle.style.textOverflow = "ellipsis";
+  cardTitle.style.overflow = "hidden";
+  cardTitle.style.whiteSpace = "nowrap";
+  let cardTitleBold = document.createElement('b');
+  cardTitleBold.innerText = card.Name;
+  cardTitle.appendChild(cardTitleBold);
 
 
-      let formForOpenJournal = document.createElement('form');
-      formForOpenJournal.setAttribute('id', "openJournal");
-      formForOpenJournal.setAttribute('action', "");
-      formForOpenJournal.setAttribute('method', "get");
-      formForOpenJournal.style.display = "inline";
-      divCardBody.appendChild(formForOpenJournal);
+  let hrLine = document.createElement('hr');
+  divCardBody.appendChild(hrLine);
+
+  divCardBody.appendChild(cardTitle);
+
+  let cardText = document.createElement('p');
+  cardText.className = "card-text";
+  cardText.innerHTML = card.Adresse + "<br />" + card.Plz + " "+card.Ort;
+  divCardBody.appendChild(cardText);
+
+  let aToForm = document.createElement('a');
+  aToForm.setAttribute('href', 'form.php?id='+card.id);
+  aToForm.className = "btn btn-secondary";
+  aToForm.textContent = "Full Details";
+  divCardBody.appendChild(aToForm);
+
+
+  let formForOpenJournal = document.createElement('form');
+  formForOpenJournal.setAttribute('id', "openJournal");
+  formForOpenJournal.setAttribute('action', "");
+  formForOpenJournal.setAttribute('method', "get");
+  formForOpenJournal.style.display = "inline";
+  divCardBody.appendChild(formForOpenJournal);
 
   let inputOfFormForOpenJournal = document.createElement('input');
   inputOfFormForOpenJournal.setAttribute('name', "id");
@@ -71,18 +73,18 @@ function createCard(card) {
   buttonOfFormForOpenJournal.appendChild(imageOfButtonOfFormForOpenJournal);
   formForOpenJournal.appendChild(buttonOfFormForOpenJournal);
 
-    let formForDeletePlace = document.createElement('form');
-    formForDeletePlace.setAttribute('action', "cards.php");
-    formForDeletePlace.setAttribute('method', "post");
-    formForDeletePlace.style.display = "inline-block";
-    formForDeletePlace.style.position = "absolute";
-    formForDeletePlace.style.right = "0";
+  let formForDeletePlace = document.createElement('form');
+  formForDeletePlace.setAttribute('action', "cards.php");
+  formForDeletePlace.setAttribute('method', "post");
+  formForDeletePlace.style.display = "inline-block";
+  formForDeletePlace.style.position = "absolute";
+  formForDeletePlace.style.right = "0";
 
-    let inputOfFormForDeletePlace = document.createElement('input');
-    inputOfFormForDeletePlace.setAttribute('name', "id");
-    inputOfFormForDeletePlace.value = card.id;
-    inputOfFormForDeletePlace.setAttribute('type', "hidden");
-    formForDeletePlace.appendChild(inputOfFormForDeletePlace);
+  let inputOfFormForDeletePlace = document.createElement('input');
+  inputOfFormForDeletePlace.setAttribute('name', "id");
+  inputOfFormForDeletePlace.value = card.id;
+  inputOfFormForDeletePlace.setAttribute('type', "hidden");
+  formForDeletePlace.appendChild(inputOfFormForDeletePlace);
 
   let buttonOfFormForDeletePlace = document.createElement('button');
   buttonOfFormForDeletePlace.className = "btn btn-light";
@@ -96,4 +98,10 @@ function createCard(card) {
   formForDeletePlace.appendChild(buttonOfFormForDeletePlace);
 
   divCardBody.appendChild(formForDeletePlace);
+}
+
+function updateUI(data) {
+  for(let card of data) {
+    createCard(card);
+  }
 }

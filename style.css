@@ -234,7 +234,7 @@ form.sign-in-form {
 .input-field {
   max-width: 380px;
   width: 100%;
-  background-color: #DCDCDC;
+  background-color: #e6e6e6;
   margin: 10px 0;
   height: 55px;
   border-radius: 55px;
@@ -368,7 +368,8 @@ form.sign-in-form {
 
 .loginsearch{
  margin-top:200px;
- margin-left: 130px;
+ margin-left: 500px;
+ color: #FAAFA0;
 }
 
 

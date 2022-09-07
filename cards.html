@@ -9,23 +9,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+            src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"
+    ></script>
 </head>
 
 <body>
     <div class="circle"></div>
     <header>
         <a href="#"><img src="logo1.png" class="logo" > </a>
+
+        <div class="input-field">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search">
+        </div>
         <ul>
             <li> <a href="/cards.html">home</a></li>
+            <li> <a href="#">add location</a> </li>
             <li> <a href="/about-us.html">about us</a></li>
             <li> <a href="/login.html">logout</a></li>
             <li> <a href="#">Download</a></li>
         </ul>
     </header>
     <div class="loginsearch">
-    <div class="input-field">
-        <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search">
+        <h1 style="font-family: 'pacifico', cursive; font-size: 3.8rem;">Hello Womos!</h1>
+    </div>
+    <div style="margin: 20px; overflow: auto;">
+        <div class="">
+            <div class="row" id="cards">
+                <!--<div id="shared-cards"></div>-->
+            </div>
         </div>
     </div>
 </body>

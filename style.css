@@ -366,9 +366,12 @@ form.sign-in-form {
   transform: translateX(800px);
 }
 
-#backBtn {
- margin-right: -20000px;
+.loginsearch{
+ margin-top:200px;
+ margin-left: 130px;
 }
+
+
 /* Login ANIMATION */
 
 .container.sign-up-mode:before {

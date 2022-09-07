@@ -19,7 +19,16 @@ function createCard(card) {
   divCardBgLight.appendChild(image);
   divCardColumnsFluid.appendChild(divCardBgLight);
 
-  let divCardBody = document.createElement('div');
+    let divCardBody = document.createElement('div');
     divCardBody.className = 'card-body';
     divCardBgLight.appendChild(divCardBody);
+
+    let cardTitle = document.createElement('h5');
+    cardTitle.className = "card-title";
+    cardTitle.style.textOverflow = "ellipsis";
+    cardTitle.style.overflow = "hidden";
+    cardTitle.style.whiteSpace = "nowrap";
+    let cardTitleBold = document.createElement('b');
+    cardTitleBold.innerText = card.Name;
+    cardTitle.appendChild(cardTitleBold);
 }

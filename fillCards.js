@@ -56,5 +56,19 @@ function createCard(card) {
       formForOpenJournal.style.display = "inline";
       divCardBody.appendChild(formForOpenJournal);
 
+  let inputOfFormForOpenJournal = document.createElement('input');
+  inputOfFormForOpenJournal.setAttribute('name', "id");
+  inputOfFormForOpenJournal.value = card.id;
+  inputOfFormForOpenJournal.setAttribute('type', "hidden");
+  formForOpenJournal.appendChild(inputOfFormForOpenJournal);
+
+  let buttonOfFormForOpenJournal = document.createElement('button');
+  buttonOfFormForOpenJournal.className = "btn btn-light";
+  buttonOfFormForOpenJournal.setAttribute("type", "submit");
+  buttonOfFormForOpenJournal.setAttribute("id", "openJournalBtn");
+  let imageOfButtonOfFormForOpenJournal = document.createElement('i');
+  imageOfButtonOfFormForOpenJournal.className = "bi bi-journal-plus";
+  buttonOfFormForOpenJournal.appendChild(imageOfButtonOfFormForOpenJournal);
+  formForOpenJournal.appendChild(buttonOfFormForOpenJournal);
 
 }

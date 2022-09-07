@@ -31,4 +31,10 @@ function createCard(card) {
     let cardTitleBold = document.createElement('b');
     cardTitleBold.innerText = card.Name;
     cardTitle.appendChild(cardTitleBold);
+
+    let hrLine = document.createElement('hr');
+      divCardBody.appendChild(hrLine);
+
+      divCardBody.appendChild(cardTitle);
+
 }

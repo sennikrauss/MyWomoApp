@@ -1,3 +1,18 @@
+fetch(window.location.origin + "/backend/cards.php")
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data)
+    updateUI(data);
+  })
+  .catch((err) => {
+    const data = [{"id":"70","Name":"testooooo","Adresse":"Wiener Stra\u00dfe 16","Plz":"14772","Ort":"Brandenburg","Land":"DE","de":"Deutschland","Platzanzahl":"5","Trinkwasser":"1","Abwasser":"1","Toilettenentsorgung":"0","Strom":"0","Dusche":"1","WC":"1","WiFi":"0","Bemerkungen":"sdf","imageData":""}];
+    //console.log(err)
+    updateUI(data)
+  })
+
+let sharedCardsArea = document.querySelector("#cards");
 
 function createCard(card) {
   let divColLg6 = document.createElement('div');
@@ -65,8 +80,9 @@ function createCard(card) {
   formForOpenJournal.appendChild(inputOfFormForOpenJournal);
 
   let buttonOfFormForOpenJournal = document.createElement('button');
-  buttonOfFormForOpenJournal.className = "btn btn-light";
+  //buttonOfFormForOpenJournal.className = "btn btn-light";
   buttonOfFormForOpenJournal.setAttribute("type", "submit");
+  buttonOfFormForOpenJournal.style.all = "unset";
   buttonOfFormForOpenJournal.setAttribute("id", "openJournalBtn");
   let imageOfButtonOfFormForOpenJournal = document.createElement('i');
   imageOfButtonOfFormForOpenJournal.className = "bi bi-journal-plus";
@@ -87,8 +103,9 @@ function createCard(card) {
   formForDeletePlace.appendChild(inputOfFormForDeletePlace);
 
   let buttonOfFormForDeletePlace = document.createElement('button');
-  buttonOfFormForDeletePlace.className = "btn btn-light";
+  //buttonOfFormForDeletePlace.className = "btn btn-light";
   buttonOfFormForDeletePlace.setAttribute("type", "submit");
+  buttonOfFormForDeletePlace.style.all = "unset";
   buttonOfFormForDeletePlace.setAttribute("id", "deleteCard");
   buttonOfFormForDeletePlace.setAttribute("name", "deletedCard");
   let imageOfButtonOfFormForDeleteJournal = document.createElement('i');

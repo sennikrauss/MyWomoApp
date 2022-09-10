@@ -88,8 +88,21 @@ function createCard(card) {
   formForOpenJournal.appendChild(buttonOfFormForOpenJournal);
 
   let formForDeletePlace = document.createElement('form');
-  formForDeletePlace.setAttribute('action', "cards.php");
-  formForDeletePlace.setAttribute('method', "post");
+  formForDeletePlace.setAttribute('id', "formDelete_"+card.id);
+  formForDeletePlace.onsubmit = function () {
+    let form = document.getElementById("formDelete_"+card.id);
+    let data = new FormData(form);
+    fetch("/backend/deleteCard.php", {
+      method: "POST",
+      body: data
+    }).then((result) => {
+      return result.json();
+    }).then((res) => {
+      console.log(res);
+      window.location.reload();
+    })
+    return false;
+  };
   formForDeletePlace.style.display = "inline-block";
   formForDeletePlace.style.position = "absolute";
   formForDeletePlace.style.right = "0";

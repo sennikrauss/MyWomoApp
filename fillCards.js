@@ -7,9 +7,7 @@ fetch(window.location.origin + "/backend/cards.php")
     updateUI(data);
   })
   .catch((err) => {
-    const data = [{"id":"70","Name":"testooooo","Adresse":"Wiener Stra\u00dfe 16","Plz":"14772","Ort":"Brandenburg","Land":"DE","de":"Deutschland","Platzanzahl":"5","Trinkwasser":"1","Abwasser":"1","Toilettenentsorgung":"0","Strom":"0","Dusche":"1","WC":"1","WiFi":"0","Bemerkungen":"sdf","imageData":""}];
-    //console.log(err)
-    updateUI(data)
+    console.log(err)
   })
 
 let sharedCardsArea = document.querySelector("#cards");

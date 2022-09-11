@@ -229,6 +229,18 @@ margin-left: -5000%;
     }
 
   .toggle{
+   position relative;
+   width: 30px;
+   height: 30px;
+   cursor: pointer;
+   background: url(menu.png);
+   background-size: 30px;
+   background-position: center;
+   background-repeat: no-repeat;
+   filter: invert(1);
+  }
+
+  .toggle .active{
 
   }
 }

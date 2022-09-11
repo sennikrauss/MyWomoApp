@@ -215,13 +215,18 @@ margin-left: -5000%;
    .circle {
     clip-path: circle(400px at center bottom);
    }
-  .sci{
-   background: red;
-   right:0;
-   width:50px;
-   border-top-left-radius: 5px;
-   border-bottom-left-radius: 5px;
-  }
+  .sci li
+   {
+     list-style: none;
+     margin-top: -50px;
+   }
+    .sci li a
+    {
+      display: inline-block;
+      margin: 1px 200px;
+      transform: scale(0.6);
+      margin-right: -200px;
+    }
 }
 
 

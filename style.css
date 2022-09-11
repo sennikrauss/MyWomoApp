@@ -170,6 +170,25 @@ margin-left: -5000%;
   clip-path: circle(550px at right 800px);
 }
 
+/**Responsive landingpage**/
+@media (max-width: 991px)
+{
+  header{
+   padding:20px;
+  }
+  header.logo{
+  max-width: 60px;
+  }
+  header ul{
+  display: none;
+
+  }
+
+}
+
+
+
+
 /**login page*/
 
 body,

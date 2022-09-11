@@ -246,13 +246,14 @@ margin-left: -5000%;
 
   }
 
-  .toggle .active{
+  .toggle .active
+  {
   position: fixed;
   right: 20px;
   background: url(close.png);
   background-size: 25px;
   background-position: center;
-  background-repeat: no repeat;
+  background-repeat: no-repeat;
   }
 
    header ul.navigation.active {

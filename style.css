@@ -184,7 +184,7 @@ margin-left: -5000%;
 
   }
   section{
-  padding:20px 20px 120px;
+  padding: 20px 20px 120px;
   }
   .content
   {
@@ -199,6 +199,16 @@ margin-left: -5000%;
     .content textBox{
      max-width: 100%;
     }
+   .content .imgBox
+   {
+    max-width: 100%;
+    justify-content: center;
+   }
+
+   .content .imgBox img
+      {
+       max-width: 250px;
+      }
 
    .circle {
    position: absolute;

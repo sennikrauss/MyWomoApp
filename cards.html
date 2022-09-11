@@ -26,7 +26,8 @@
             <i class="fa fa-search"></i>
             <input type="text" placeholder="Search" onkeyup=searchFunction("search") id="search">
         </div>
-        <ul>
+        <div class="toggle" onclick="toggleMenu();"></div>
+        <ul class="navigation">
             <li> <a href="/cards.html">home</a></li>
             <li> <a href="#">add location</a> </li>
             <li> <a href="/about-us.html">about us</a></li>
@@ -47,3 +48,13 @@
 </body>
 
 <script src="/fillCards.js"></script>
+<script>
+    function toggleMenu()
+ {
+ var menuToggle= document.querySelector('.toggle');
+ var navigation= document.querySelector('.navigation')
+ menuToggle.classList.toggle('active')
+ navigation.classList.toggle('active')
+
+ }
+</script>

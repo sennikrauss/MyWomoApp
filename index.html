@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="/style.css" rel="stylesheet" />
+  <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -16,10 +17,11 @@
   <div class=" circle"></div>
   <header>
   <a href="#"><img src="logo1.png" class="logo" > </a>
-  <ul>
-    <li> <a href="/login.html">login</a></li>
-   <!--<li> <a href="/cards.html">home</a></li>-->
-    <li> <a href="/403-page.html">home</a></li>
+    <div class="toggle" onclick="toggleMenu();"></div>
+  <ul class="navigation">
+    <li> <a id="loginBtn" href="/login.html">login</a></li>
+    <li> <a id="logoutBtn" style="display: none;" href="/login.html">logout</a></li>
+    <li> <a id="home" style="display: none; cursor: pointer" href="/cards.html">home</a></li>
     <li> <a href="/about-us.html">about us</a></li>
     <li> <a href="#">Download</a></li>
   </ul>
@@ -33,7 +35,7 @@
         Das Ziel ist häufig, Erfahrung und Wissen gemeinschaftlich zu sammeln und
         in für die Zielgruppe verständlicher Form zu dokumentieren.
       </p>
-      <a href="#">Download</a>
+      <a style="cursor: pointer; display: none;" id="install2">Download</a>
     </div>
     <div class="imgBox">
       <img src="t.png" class="starbucks" width="400">
@@ -58,8 +60,19 @@ function imgSlider(anything){
     const circle = document.querySelector('.circle');
     circle.style.background= color;
  }
+
+ function toggleMenu()
+ {
+ var menuToggle= document.querySelector('.toggle');
+ var navigation= document.querySelector('.navigation')
+ menuToggle.classList.toggle('active')
+ navigation.classList.toggle('active')
+
+ }
+
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="script.js"></script>
 </body>

@@ -1,3 +1,5 @@
+importScripts('/idb.js');
+
 const CACHE_VERSION = 1;
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
@@ -6,7 +8,9 @@ const STATIC_FILES = [
   "/style.css",
   "/script.js",
   "/cards.html",
-  "/about-us.html"
+  "/about-us.html",
+  "/idb.js",
+
 ];
 
 self.addEventListener("install", function(event) {

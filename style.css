@@ -731,7 +731,7 @@ form.sign-in-form {
 
 /**403 page**/
 #error{
-  background: linear-gradient(45deg,#8500ff, #5acaff);
+  background: linear-gradient(45deg,#f7d2df, #5acaff);
   height:100vh;
 }
 
@@ -745,7 +745,7 @@ form.sign-in-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('test.png'), #151729;
+  background: #ffe7ec;
   box-shadow: 0 15px 30px rgba(0,0,0,.5);
 }
 
@@ -757,7 +757,7 @@ form.sign-in-form {
 
 #errcontainer .errcontent h2{
     font-size: 18vw;
-    color: #fff;
+    color: #FA9D8E;
     line-height: 1em;
 
 }
@@ -766,15 +766,15 @@ form.sign-in-form {
     position: relative;
     font-size: 1.5em;
     margin-bottom:20px;
-    color: #111;
-    background:#fff;
+    color: #fff;
+    background:#FA9D8E;
     font-weight:300;
     padding: 10px; 20px;
     display: inline-block;
 }
 
 #errcontainer .errcontent p{
-   color: #fff;
+   color: #FA9D8E;
    font-size: 1.2em;
 }
 
@@ -782,11 +782,9 @@ form.sign-in-form {
   position: relative;
   display: inline-block;
   padding: 10px; 25px;
-  background: #ff0562;
+  background: #FA9D8E;
   color:#fff;
   text-decoration: none;
   margin-top: 25px;
   border-radius: 25px;
-  border-bottom: 4px solid #d00d56;
-
 }

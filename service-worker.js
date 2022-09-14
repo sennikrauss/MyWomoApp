@@ -1,4 +1,5 @@
 importScripts('/idb.js');
+importScripts('/indexedDB.js');
 
 const CACHE_VERSION = 1;
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
@@ -10,7 +11,7 @@ const STATIC_FILES = [
   "/cards.html",
   "/about-us.html",
   "/idb.js",
-
+  "/indexedDB.js"
 ];
 
 self.addEventListener("install", function(event) {
@@ -38,9 +39,7 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-  // check if request is made by chrome extensions or web page
-  // if request is made for web page url must contains http.
-   const url = 'http://localhost:4158/backend/cards.php';
+   const url = 'http://localhost:4000/backend/cards.php';
   if(event.request.url.indexOf(url) >= 0) {
       event.respondWith(
         fetch(event.request)
@@ -73,7 +72,6 @@ self.addEventListener('fetch', event => {
             });
         }
       })
-  );
  })
 
 )}

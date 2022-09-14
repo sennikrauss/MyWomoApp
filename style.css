@@ -739,3 +739,30 @@ form.sign-in-form {
   height: 100%;
   background: #F8B7AD;
   clip-path: circle(400px at center 1000px);
+
+/**Form**/
+.select2-container .select2-selection--single {
+    height: 40px;
+    padding: 4px 0 0 6px;
+    border-color: #cccccc;
+  }
+
+  #create #player, #create #canvas
+  {
+    width: 512px;
+    max-width: 100%;
+    display: none;
+    margin: auto;
+  }
+
+  #image-picker-area #pick-image, #image-picker-area #player, #image-picker-area #clickPic, #location-loader
+  {
+    display: none;
+  }
+
+
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -40,7 +40,22 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   // check if request is made by chrome extensions or web page
   // if request is made for web page url must contains http.
-  if (!(event.request.url.indexOf('http') === 0)) return; // skip the request. if request is not made with http protocol
+   const url = 'http://localhost:4158/backend/cards.php';
+  if(event.request.url.indexOf(url) >= 0) {
+      event.respondWith(
+        fetch(event.request)
+          .then(res => {
+            const clonedResponse = res.clone();
+            clonedResponse.json()
+              .then(data => {
+                for (let key in data) {
+                  writeData("cards", data[key]);
+                }
+              })
+            return res;
+          })
+      )
+      } else {
 
   event.respondWith(
     caches.match(event.request)
@@ -59,4 +74,6 @@ self.addEventListener('fetch', event => {
         }
       })
   );
-})
+ })
+
+)}

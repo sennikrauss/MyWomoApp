@@ -13,7 +13,9 @@ let clickToLogin = document.getElementById('clickToLogin');
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 
 button.addEventListener("click", () => {
-
+ Notification.requestPermission().then(perm =>{
+ alert (perm)
+ })
 } )
 
 if (clickToLogin) {

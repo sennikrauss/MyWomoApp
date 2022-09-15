@@ -1,4 +1,6 @@
 const CACHE_VERSION = 1;
+const button = document.querySelector("button")
+
 let installEvent = null;
 let installButton = document.getElementById("install");
 let installButton2 = document.getElementById("install2");
@@ -9,6 +11,10 @@ let homeBtn = document.getElementById("home");
 let clickToLogin = document.getElementById('clickToLogin');
 
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
+
+button.addEventListener("click", () => {
+
+} )
 
 if (clickToLogin) {
   clickToLogin.addEventListener("click", function() {

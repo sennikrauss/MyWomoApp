@@ -24,13 +24,8 @@
     if (parts.length === 2) return parts.pop().split(';').shift();
   }
 
-  window.onload = function (){
-    if (!getCookie("userId")) {
-      let body = document.getElementById('body');
-      body.style.display = "none";
-    }else {
-      /*page 403*/
-    }
+  if (!getCookie("userId")) {
+    window.location.href = "/403-page.html"
   }
 </script>
 

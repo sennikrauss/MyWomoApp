@@ -12,7 +12,8 @@ const STATIC_FILES = [
   "/fillCards.js",
   "/login.html",
   "/login-signin.js",
-  "/search.js"
+  "/search.js",
+  "/403-page.html"
 ];
 
 self.addEventListener("install", event => {

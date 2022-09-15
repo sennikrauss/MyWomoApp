@@ -80,10 +80,10 @@ header ul li a {
 .content .textBox h2 span
 {
   color: #FAAFA0;
-  font-size: 1.2 em;
+  font-size: 1.2em;
   font-weigth: 900;
 }
-.content textBox p {
+.content .textBox p {
   color: #333;
   }
 .content .textBox a{
@@ -99,7 +99,7 @@ header ul li a {
  font-size: 18px;
 }
 
-.content:imgBox
+.content .imgBox
  {
     width: 600px;
     display: flex;
@@ -121,12 +121,9 @@ header ul li a {
 .thumb li {
 list-style: none;
 display: inline-block;
-margin: 0 20px;
-cursor: pointer;
+  cursor: pointer;
 transition : 0.5s;
-margin-bottom: 60px
-margin-left: -5000%;
-
+  margin: 0 20px 60px -5000%;
 }
 
 .thumb li:hover
@@ -137,7 +134,7 @@ margin-left: -5000%;
 {
   max-width: 100px;
 }
- sci{
+ .sci{
     position: absolute;
     top: 50%;
     right: 30px;
@@ -154,9 +151,8 @@ margin-left: -5000%;
  .sci li a
  {
    display: inline-block;
-   margin: 5px 0;
    transform: scale(0.6);
-   margin-right: -60px;
+   margin: 5px -60px 5px 0;
  }
 
 
@@ -200,7 +196,7 @@ margin-left: -5000%;
    font-size: 2.5em;
    margin-bottom:15px;
   }
-    .content textBox{
+    .content .textBox{
      max-width: 100%;
     }
    .content .imgBox
@@ -227,9 +223,8 @@ margin-left: -5000%;
     .sci li a
     {
       display: inline-block;
-      margin: 1px 200px;
       transform: scale(0.6);
-      margin-right: -200px;
+      margin: 1px -200px 1px 200px;
     }
 
   .toggle{
@@ -237,11 +232,9 @@ margin-left: -5000%;
    width: 30px;
    height: 30px;
    cursor: pointer;
-   background: url(menu.png);
-   background-size: 30px;
-   background-position: center;
-   background-repeat: no-repeat;
-   filter: invert(1);
+    background-size: 30px;
+    background: url(menu.png) no-repeat center;
+    filter: invert(1);
    z-index:11;
 
   }
@@ -250,10 +243,8 @@ margin-left: -5000%;
   {
   position: fixed;
   right: 20px;
-  background: url(close.png);
-  background-size: 25px;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-size: 25px;
+    background: url(close.png) no-repeat center;
   }
 
    header ul.navigation.active {
@@ -313,7 +304,7 @@ form {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0rem 5rem;
+  padding: 0 5rem;
   transition: all 0.2s 0.7s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -675,12 +666,11 @@ form.sign-in-form {
 .test{
   width: 1280px;
   max-width: 95%;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  align-items; center;
+  align-items: center;
   justify-content: space-around;
-  margin-right: 0px;
+  margin: 0 0 0 auto;
 }
 
 .text h1{
@@ -688,12 +678,12 @@ form.sign-in-form {
   font-size: 85px;
   margin-bottom: 20px;
   text-transform: capitalize;
-  margin-right: 0px;
+  margin-right: 0;
 }
 
 .text h5{
  font-size: 25px;
- margin-bottom 25px;
+ margin-bottom: 25px;
  text-transform: capitalize;
  letter-spacing: 2px;
 }
@@ -711,7 +701,7 @@ form.sign-in-form {
   .about{
     width: 100%;
     height: auto;
-    padding: 70px 0px;
+    padding: 70px 0;
   }
 }
 
@@ -731,7 +721,7 @@ form.sign-in-form {
 
 /**home*/
 
-.circlehome{
+.circlehome {
   position: absolute;
   top: 0;
   left: 0;
@@ -739,3 +729,4 @@ form.sign-in-form {
   height: 100%;
   background: #F8B7AD;
   clip-path: circle(400px at center 1000px);
+}

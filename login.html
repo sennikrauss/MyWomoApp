@@ -17,17 +17,17 @@
 <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="" class="sign-in-form">
+        <form onsubmit="return sendLoginData()" id="loginForm" class="sign-in-form">
          <h2 class="title"> Sign in</h2>
          <div class="input-field">
              <i class=" fas fa-user"></i>
-             <input type="text" placeholder="Username">
+             <input type="text" name="username" placeholder="Username">
          </div>
          <div class="input-field">
              <i class=" fas fa-key"></i>
-             <input type="password" placeholder="password">
+             <input type="password" name="password" placeholder="password">
          </div>
-         <input type="submit" value="login" class="btn solid" id="clickToLogin">
+         <input type="submit" value="login" name="loggedIn" class="btn solid" id="clickToLogin">
             <p class="social-text">Or <a href="/index.html">go back</a> to landingpage</p>
         </form>
         <form action="" class="sign-up-form">
@@ -75,5 +75,4 @@
     </div>
 </div>
 <script src="login-signin.js"></script>
-<script src="script.js"></script>
 </body>

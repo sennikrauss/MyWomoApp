@@ -17,8 +17,24 @@
             crossorigin="anonymous"
     ></script>
 </head>
+<script defer>
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
 
-<body>
+  window.onload = function (){
+    if (!getCookie("userId")) {
+      let body = document.getElementById('body');
+      body.style.display = "none";
+    }else {
+      /*page 403*/
+    }
+  }
+</script>
+
+<body id="body">
     <div class="circlehome"></div>
     <header>
         <a href="#"><img src="logo1.png" class="logo" > </a>
@@ -29,11 +45,11 @@
         </div>
         <div class="toggle" onclick="toggleMenu();"></div>
         <ul class="navigation">
-            <li> <a href="/cards.html">home</a></li>
+            <li> <a href="/cards.html" id="home">home</a></li>
             <li> <a href="#">add location</a> </li>
             <li> <a href="/about-us.html">about us</a></li>
-            <li> <a href="/login.html">logout</a></li>
-            <li> <a href="#">Download</a></li>
+            <li> <a href="/login.html" id="logoutBtn">logout</a></li>
+            <li> <a id="install3" style="cursor: pointer">Download</a></li>
         </ul>
     </header>
     <div class="loginsearch">
@@ -59,3 +75,5 @@
 
  }
 </script>
+<script src="app.js"></script>
+<script src="script.js"></script>

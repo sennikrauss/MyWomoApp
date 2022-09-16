@@ -30,7 +30,6 @@
         <div class="toggle" onclick="toggleMenu();"></div>
         <ul class="navigation">
             <li> <a href="/cards.html">home</a></li>
-            <li> <a href="/form.html">add location</a> </li>
             <li> <a href="/about-us.html">about us</a></li>
             <li> <a href="/login.html">logout</a></li>
             <li> <a href="#">Download</a></li>
@@ -42,7 +41,19 @@
     <div style="margin: 20px; overflow: auto;">
         <div class="">
             <div class="row" id="cards">
-                <!--<div id="shared-cards"></div>-->
+              <div class="col-lg-6">
+                <div class="card-columns-fluid">
+                  <div id="openForm" class="card bg-light" style="margin-bottom: 1rem; cursor: pointer">
+                    <img src="addLocation.jpeg" class="card-img-top" style="height: 31vw; object-fit: contain">
+                    <div class="card-body">
+                      <h3 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; text-align: center">
+                        <b>Create a new Place</b>
+                      </h3>
+                      <!--<h1 style="text-align: center; font-size: 8rem"><i class="bi bi-file-plus"></i></h1>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
@@ -52,6 +63,9 @@
 <script src="/indexedDB.js"></script>
 <script src="/fillCards.js"></script>
 <script>
+  document.getElementById('openForm').addEventListener('click', () => {
+    window.location.href = "/form.html";
+  })
     function toggleMenu()
  {
  var menuToggle= document.querySelector('.toggle');

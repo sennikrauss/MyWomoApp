@@ -21,26 +21,30 @@
          <h2 class="title"> Sign in</h2>
          <div class="input-field">
              <i class=" fas fa-user"></i>
-             <input type="text" name="username" placeholder="Username">
+             <input type="text" name="username" placeholder="Username" required>
          </div>
          <div class="input-field">
              <i class=" fas fa-key"></i>
-             <input type="password" name="password" placeholder="password">
+             <input type="password" name="password" placeholder="password" required>
          </div>
          <input type="submit" value="login" name="loggedIn" class="btn solid" id="clickToLogin">
             <p class="social-text">Or <a href="/index.html">go back</a> to landingpage</p>
         </form>
-        <form action="" class="sign-up-form">
+        <form onsubmit="return sendSignInData()" id="signinForm" class="sign-up-form">
             <h2 class="title"> Sign up</h2>
             <div class="input-field">
                 <i class=" fas fa-user"></i>
-                <input type="text" placeholder="Username">
+                <input type="text" placeholder="Username" name="newUsername" minlength="6" required>
             </div>
             <div class="input-field">
                 <i class=" fas fa-key"></i>
-                <input type="password" placeholder="password">
+                <input type="password" placeholder="Password" minlength="6" id="password-neu" name="newPassword" required>
             </div>
-            <input type="submit" value="Sign up" class="btn solid">
+            <div class="input-field">
+                <i class=" fas fa-key"></i>
+                <input type="password" placeholder="Repeat Password" minlength="6" name="repeatPassword" required oninput={checkPassword(this)}>
+            </div>
+            <input type="submit" value="Sign up" class="btn solid" name="signUp">
             <p class="social-text">Or <a href="/index.html">go back</a> to landingpage</p>
         </form>
       </div>

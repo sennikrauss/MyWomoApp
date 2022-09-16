@@ -31,3 +31,31 @@ function sendLoginData(){
   })
   return false;
 }
+
+function checkPassword(pw) {
+  let passwordInput = document.getElementById('password-neu').value
+  if (pw.value !== passwordInput) {
+    pw.setCustomValidity('Passwort stimmt nicht überein.');
+  } else {
+    pw.setCustomValidity('');
+  }
+}
+
+function sendSignInData() {
+  let form = document.getElementById('signinForm');
+  let data = new FormData(form);
+  fetch("/backend/login.php", {
+    method: "POST",
+    body: data
+  }).then(result => {
+    return result.text();
+  }).then(response => {
+    console.log(response);
+    if (response === "insertedNewUser") {
+      location.reload();
+    }
+  }).catch(error => {
+    console.error(error);
+  })
+  return false;
+}

@@ -27,3 +27,16 @@ if (isset($_POST['username'])) {
     return false;
   }
 }
+
+if (isset($_POST['newUsername']) && isset($_POST['newPassword'])){
+  $username = $_POST['newUsername'];
+  $password = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
+  $sql = "insert into users (username, password) values('{$username}', '{$password}') ";
+
+  if (connect()->query($sql) === TRUE){
+    echo "insertedNewUser";
+  }else {
+    echo connect()->error;
+  }
+  return true;
+}

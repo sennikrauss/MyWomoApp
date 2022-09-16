@@ -6,19 +6,26 @@ const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
 const STATIC_FILES = [
   "/",
+  "/index.html",
   "/style.css",
   "/script.js",
   "/cards.html",
   "/about-us.html",
+  "/app.js",
+  "/fillCards.js",
+  "/login.html",
+  "/login-signin.js",
+  "/search.js",
+  "/403-page.html",
   "/idb.js",
   "/indexedDB.js",
   "/form.html"
-];
+].map(url => new Request(url, {credentials: 'include'}));
 
-self.addEventListener("install", function(event) {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CURRENT_STATIC_CACHE).then(function(cache) {
-      return cache.addAll(STATIC_FILES);
+    caches.open(CURRENT_STATIC_CACHE).then( cache => {
+      cache.addAll(STATIC_FILES);
     })
   );
 });

@@ -7,7 +7,14 @@ fetch(window.location.origin + "/backend/cards.php")
     updateUI(data);
   })
   .catch((err) => {
-    console.log(err)
+    console.error(err)
+    if('indexedDB' in window) {
+      readAllData('cards')
+        .then( data => {
+          console.log('From cache ...', data);
+          updateUI(data);
+        })
+    }
   })
 
 let sharedCardsArea = document.querySelector("#cards");

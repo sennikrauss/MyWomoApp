@@ -12,11 +12,35 @@ let clickToLogin = document.getElementById('clickToLogin');
 
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 
-button.addEventListener("click", () => {
+/**button.addEventListener("click", () => {
  Notification.requestPermission().then(perm =>{
- alert (perm)
+  if( perm === "granted") {
+   const notification = new Notification(" Hey Schau doch mal auf unsere Social Media Kanäle vorbei",{
+   body: " hier kommt ein Text hin",
+   data: { hello: "world"}
+   )}
+    notification.addEventListener("close", e => {
+    console.log()
+    })
+   }
  })
-} )
+})**/
+
+let notification
+let interval
+document.addEventListener("click", () => {
+  if( document.visibilityState === "hidden") {
+   setInterval()=> {
+   notification = new Notification("hi",{
+   body: "hey you",
+   tag: "world",
+   })
+   }, 100)
+   } else{
+    notification.close()
+    }
+ })
+
 
 if (clickToLogin) {
   clickToLogin.addEventListener("click", function() {

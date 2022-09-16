@@ -58,7 +58,7 @@ function createCard(card) {
   divCardBody.appendChild(cardText);
 
   let aToForm = document.createElement('a');
-  aToForm.setAttribute('href', 'form.php?id='+card.id);
+  aToForm.setAttribute('href', 'form.html?id='+card.id);
   aToForm.className = "btn btn-secondary";
   aToForm.textContent = "Full Details";
   divCardBody.appendChild(aToForm);

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap');
+
 *
 {
    margin: 0;
@@ -98,7 +100,7 @@ header ul li a {
  font-size: 18px;
 }
 
-.content .imgBox
+.content:imgBox
  {
     width: 600px;
     display: flex;
@@ -120,9 +122,11 @@ header ul li a {
 .thumb li {
 list-style: none;
 display: inline-block;
-  cursor: pointer;
+margin: 0 20px;
+cursor: pointer;
 transition : 0.5s;
-  margin: 0 20px 60px -5000%;
+margin-bottom: 60px
+margin-left: -5000%;
 }
 
 .thumb li:hover
@@ -133,7 +137,7 @@ transition : 0.5s;
 {
   max-width: 100px;
 }
- .sci{
+.sci{
     position: absolute;
     top: 50%;
     right: 30px;
@@ -223,7 +227,9 @@ transition : 0.5s;
     {
       display: inline-block;
       transform: scale(0.6);
-      margin: 1px -200px 1px 200px;
+      margin: 1px 200px;
+      transform: scale(0.6);
+      margin-right: -200px;
     }
 
   .toggle{
@@ -231,9 +237,11 @@ transition : 0.5s;
    width: 30px;
    height: 30px;
    cursor: pointer;
-    background-size: 30px;
-    background: url(menu.png) no-repeat center;
-    filter: invert(1);
+   background: url(menu.png);
+   background-size: 30px;
+   background-position: center;
+   background-repeat: no-repeat;
+   filter: invert(1);
    z-index:11;
 
   }
@@ -242,8 +250,10 @@ transition : 0.5s;
   {
   position: fixed;
   right: 20px;
-    background-size: 25px;
-    background: url(close.png) no-repeat center;
+  background: url(close.png);
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
   }
 
    header ul.navigation.active {

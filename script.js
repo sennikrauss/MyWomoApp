@@ -1,82 +1,45 @@
 const CACHE_VERSION = 1;
-const button = document.querySelector("button")
-
 let installEvent = null;
-let installButton = document.getElementById("install");
+
 let installButton2 = document.getElementById("install2");
-let installButton3 = document.getElementById("install3");
-let loginBtn = document.getElementById("loginBtn");
+let installButton = document.getElementById("install");
 let logoutBtn = document.getElementById("logoutBtn");
 let homeBtn = document.getElementById("home");
-let clickToLogin = document.getElementById('clickToLogin');
+let loginBtn = document.getElementById("loginBtn");
+let installButton3 = document.getElementById("install3");
 
-const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
-
-if (clickToLogin) {
-  clickToLogin.addEventListener("click", function() {
-    this.disabled = true;
-    startPwa(true);
-  });
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-if(localStorage["pwa-enabled"]) {
-  startPwa();
-}
-
-function startPwa(firstStart) {
-  localStorage["pwa-enabled"] = true;
-
-  if(firstStart) {
-    //window.reload();
-    location.href = "/";
+if (getCookie("userId")){
+  if (installButton && installButton2) {
+    installButton.style.display = "initial";
+    installButton2.style.display = "initial";
+  }
+  if (logoutBtn) {
+    logoutBtn.style.display = "initial";
   }
 
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js")
-      .then(registration => {
-        console.log("Service Worker is registered", registration);
-        if (installButton && installButton2) {
-          installButton.style.display = "initial";
-          installButton2.style.display = "initial";
-        }
+  if (homeBtn) {
+    homeBtn.style.display = "initial";
+  }
 
-        if (homeBtn) {
-         homeBtn.style.display = "initial";
-        }
+  if (loginBtn) {
+    loginBtn.style.display = "none";
+  }
+}
 
-        if (loginBtn) {
-          loginBtn.style.display = "none";
-        }
-
-        if (logoutBtn) {
-          logoutBtn.style.display = "initial";
-        }
-      })
-      .catch(err => {
-        console.error("Registration failed:", err);
-      });
-  });
-
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    console.log("Ready to install...");
-    installEvent = e;
-  });
-
-  setTimeout(cacheLinks, 500);
-
-  function cacheLinks() {
-    caches.open(CURRENT_STATIC_CACHE).then(function(cache) {
-      let linksFound = [];
-      document.querySelectorAll("a").forEach(function(a) {
-        linksFound.push(a.href);
-      });
-
-      cache.addAll(linksFound);
+if (installButton && installButton2){
+  if(installButton.style.display !=="none" && installButton2.style.display !== "none") {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      console.log("Ready to install...");
+      installEvent = e;
     });
-  }
 
-  if(installButton && installButton2) {
     installButton.addEventListener("click", function() {
       installEvent.prompt();
     });
@@ -86,11 +49,35 @@ function startPwa(firstStart) {
     });
   }
 
-  if (installButton3){
-    installButton3.addEventListener("click", function() {
-      installEvent.prompt();
-    });
-  }
+}
+
+if (installButton3 && installButton3.style.display !== "none") {
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    console.log("Ready to install...");
+    installEvent = e;
+  });
+
+  installButton3.addEventListener("click", function() {
+    installEvent.prompt();
+  });
+}
+
+if (logoutBtn && logoutBtn.style.display!=="none") {
+  logoutBtn.addEventListener('click', () => {
+    async function deleteCookies() {
+      let name1 = "user";
+      let name2 = "userId";
+      document.cookie = name1 + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+      document.cookie = name1 + '=; path=/cards.html; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+      document.cookie = name2 + '=; path=/backend/cards.php; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+      document.cookie = name2 + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+    }
+
+    deleteCookies().then(() => {
+      document.location.pathname = "/login.php";
+    })
+  })
 }
 
 button.addEventListener("click", () => {

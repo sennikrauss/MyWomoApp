@@ -1,18 +1,31 @@
+importScripts('/idb.js');
+importScripts('/indexedDB.js');
+
 const CACHE_VERSION = 1;
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
 const STATIC_FILES = [
   "/",
+  "/index.html",
   "/style.css",
   "/script.js",
   "/cards.html",
-  "/about-us.html"
-];
+  "/about-us.html",
+  "/app.js",
+  "/fillCards.js",
+  "/login.html",
+  "/login-signin.js",
+  "/search.js",
+  "/403-page.html",
+  "/idb.js",
+  "/indexedDB.js",
+  "/form.html"
+].map(url => new Request(url, {credentials: 'include'}));
 
-self.addEventListener("install", function(event) {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CURRENT_STATIC_CACHE).then(function(cache) {
-      return cache.addAll(STATIC_FILES);
+    caches.open(CURRENT_STATIC_CACHE).then( cache => {
+      cache.addAll(STATIC_FILES);
     })
   );
 });
@@ -34,27 +47,41 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-  // check if request is made by chrome extensions or web page
-  // if request is made for web page url must contains http.
-  if (!(event.request.url.indexOf('http') === 0)) return; // skip the request. if request is not made with http protocol
+  const url = 'http://localhost:4200/backend/cards.php';
+  if (event.request.url.indexOf(url) >= 0) {
+    event.respondWith(
+      fetch(event.request)
+        .then(res => {
+          const clonedResponse = res.clone();
+          clonedResponse.json()
+            .then(data => {
+              for (let key in data) {
+                writeData("cards", data[key]);
+              }
+            })
+          return res;
+        })
+    )
+  } else {
 
-  event.respondWith(
-    caches.match(event.request)
-      .then( response => {
-        if(response) {
-          return response;
-        } else {
-          return fetch(event.request)
-            .then( res => {     // nicht erneut response nehmen, haben wir schon
-              return caches.open(CURRENT_DYNAMIC_CACHE)      // neuer, weiterer Cache namens dynamic
-                .then( cache => {
-                  cache.put(event.request.url, res.clone());
-                  return res;
-                })
-            });
-        }
-      })
-  );
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          if (response) {
+            return response;
+          } else {
+            return fetch(event.request)
+              .then(res => {     // nicht erneut response nehmen, haben wir schon
+                return caches.open(CURRENT_DYNAMIC_CACHE)      // neuer, weiterer Cache namens dynamic
+                  .then(cache => {
+                    cache.put(event.request.url, res.clone());
+                    return res;
+                  })
+              });
+          }
+        })
+    )
+  }
 })
 
 /**push Notification von Freiheit*/

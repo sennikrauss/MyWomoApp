@@ -12,36 +12,6 @@ let clickToLogin = document.getElementById('clickToLogin');
 
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 
-/**button.addEventListener("click", () => {
- Notification.requestPermission().then(perm =>{
-  if( perm === "granted") {
-   const notification = new Notification(" Hey Schau doch mal auf unsere Social Media Kanäle vorbei",{
-   body: " hier kommt ein Text hin",
-   data: { hello: "world"}
-   )}
-    notification.addEventListener("close", e => {
-    console.log()
-    })
-   }
- })
-})**/
-
-let notification
-let interval
-document.addEventListener("click", () => {
-  if( document.visibilityState === "hidden") {
-   setInterval()=> {
-   notification = new Notification("hi",{
-   body: "hey you",
-   tag: "world",
-   })
-   }, 100)
-   } else{
-    notification.close()
-    }
- })
-
-
 if (clickToLogin) {
   clickToLogin.addEventListener("click", function() {
     this.disabled = true;
@@ -122,3 +92,122 @@ function startPwa(firstStart) {
     });
   }
 }
+
+
+
+/**button.addEventListener("click", () => {
+ Notification.requestPermission().then(perm =>{
+  alert("hi")
+ })
+})**/
+
+/**button.addEventListener("click", () => {
+ Notification.requestPermission().then(perm =>{
+  alert(perm)
+ })
+})**/
+
+/**button.addEventListener("click", () => {
+ Notification.requestPermission().then(perm => {
+  if (perm === "granted"){
+  new Notification("Successfully subscribed!")
+  }
+ })
+})**/
+
+button.addEventListener("click", () => {
+Notification.requestPermission().then(perm => {
+  if (perm === "granted"){
+  new Notification("Successfully subscribed!",{
+  body:"You successfully subscribed to our Notification service!",
+  icon: "logo1.png"
+  })
+  }
+ })
+})
+
+/**data showing**/
+
+/**button.addEventListener("click", () => {
+Notification.requestPermission().then(perm => {
+  if (perm === "granted"){
+  const notification = new Notification ("Successfully subscribed!", {
+  body:"You successfully subscribed to our Notification service!",
+  data:{ hello: "world"},
+  icon: "logo1.png"
+  })
+    notification.addEventListener("error", e => {
+     console.log(e)
+     alert("error")
+    })
+  }
+ })
+})**/
+
+
+
+
+
+/**button.addEventListener("click", () => {
+ Notification.requestPermission().then(perm =>{
+  if( perm === "granted") {
+   const notification = new Notification(" Hey Schau doch mal auf unsere Social Media Kanäle vorbei",{
+   body: " hier kommt ein Text hin",
+   data: { hello: "world"}
+   )}
+    notification.addEventListener("close", e => {
+    console.log()
+    })
+   }
+ })
+})**/
+
+/**let notification
+let interval
+document.addEventListener("click", () => {
+  if( document.visibilityState === "hidden") {
+   setInterval()=> {
+   notification = new Notification("hi",{
+   body: "hey you",
+   tag: "world",
+   })
+   }, 100)
+   } else{
+    notification.close()
+    }
+ })**/
+
+ /** come back **/
+
+/**let notification
+document.addEventListener("visibilitychange",() => {
+  if(document.visibilityState === "hidden"){
+   notification = new Notification("Come back pleaaase", {
+   body: "Pleaase",
+   tag: "Come Back",
+   })
+   } else{
+     notification.close()
+  }
+})
+
+**/
+
+/**let notification
+let interval
+document.addEventListener("visibilitychange",() => {
+  if(document.visibilityState === "hidden"){
+  const leaveDate = new Date()
+   interval () = setInterval( ()=> {
+    notification = new Notification("Come back pleaaase", {
+       body: "you have been gone for
+        ${ Math.round( (new Date()-leaveDate) /1000
+       )} seconds ",
+       tag: "Come Back",
+       })
+   },100)
+   } else{
+     if (interval) clearInterval(interval)
+     if (notification) notification.close()
+  }
+})**/

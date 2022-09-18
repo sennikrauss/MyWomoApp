@@ -10,6 +10,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Select2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<link href="/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+
 <style>
   .select2-container .select2-selection--single {
     height: 40px;
@@ -32,7 +35,7 @@
 
 <body style="background-color: #ffddd6">
 <div style="margin: 20px" id="create">
-  <h1>Add a new Place</h1>
+  <h1 id="newplace">Add a new Place</h1>
   <form name="addPlace" enctype="multipart/form-data" action="" id="form" method="post" class="frmImageUpload">
 
     <div class="form-group row">
@@ -123,5 +126,32 @@
     <a href="cards.html"><button type="button" class="btn btn-secondary">Abbrechen</button></a>
   </form>
 </div>
-</body>
 
+<!--start-->
+<button id="takePic " class="btn btn-light">
+  Bild aufnehmen
+</button>
+
+<div class="form-group row" id="image-picker-area">
+  <?php if (isset($_GET['id'])):?><label for="Bild" class="col-sm-3 col-form-label">Bild</label>
+  <div class="col-sm-3"><?php echo $bild;?> </div><?php endif;?>
+  <div class="col-sm-6">
+    <div id="camera-area">
+      <video id="player" autoplay></video>
+      <canvas id="canvas" width="320px" height="240px"></canvas>
+      <button class="btn btn-light" id="clickPic">Foto</button>
+    </div>
+    <div id="pick-image">
+      <h6>Bild auswählen</h6>
+      <input type="file" accept="image/jpg" name="userImage" class="inputFile form-control" id="pic">
+    </div>
+  </div>
+</div>
+<!--ende-->
+
+<button class="btn btn-light" id="choosePic">
+  Bild auswählen
+</button>
+
+</body>
+<script src="./scripts/takeImage.js"></script>

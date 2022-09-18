@@ -787,3 +787,23 @@ form.sign-in-form {
   border-radius: 25px;
 }
 
+/**form**/
+
+#newplace{
+ margin-left: 300px;
+}
+
+#takepic{
+background:url(foto.png);
+}
+
+#create video, #create canvas {
+    width: 512px;
+    max-width: 100%;
+    display: none;
+    margin: auto;
+  }
+
+  #image-picker-area #pick-image, #image-picker-area #player, #image-picker-area #clickPic{
+    display: none;
+  }

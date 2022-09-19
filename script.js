@@ -39,6 +39,11 @@ if (installButton && installButton2){
       installEvent = e;
     });
 
+    if (installEvent === null) {
+      installButton.style.display = "none";
+      installButton2.style.display = "none";
+    }
+
     installButton.addEventListener("click", function() {
       installEvent.prompt();
     });
@@ -56,6 +61,10 @@ if (installButton3 && installButton3.style.display !== "none") {
     console.log("Ready to install...");
     installEvent = e;
   });
+
+  if (installEvent === null) {
+    installButton3.style.display = "none";
+  }
 
   installButton3.addEventListener("click", function() {
     installEvent.prompt();

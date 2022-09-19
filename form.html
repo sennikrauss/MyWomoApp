@@ -64,7 +64,7 @@
     </div>
 
     <div class="form-group row" style="margin-right: auto; margin-left: auto">
-      <button class="btn btn-light" type="button" id="location-btn">Meinen Standort verwenden</button>
+      <button class="btn btn-light" type="button" id="location-btn">Use my location</button>
       <div id="location-loader"></div>
     </div>
 
@@ -72,25 +72,25 @@
 
 
     <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Adresse*</label>
+      <label for="Name" class="col-sm-3 col-form-label">Address*</label>
       <div class="col-sm-9"><input required type="text" class="form-control" name="Adresse" id="adresse" value=""></div>
     </div>
 
     <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">PLZ*</label>
+      <label for="Name" class="col-sm-3 col-form-label">Postcode*</label>
       <div class="col-sm-9"><input required type="text" class="form-control" pattern="[0-9]{5}" name="Plz" id="plz" value=""></div>
     </div>
 
     <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Ort*</label>
+      <label for="Name" class="col-sm-3 col-form-label">District*</label>
       <div class="col-sm-9"><input required type="text" class="form-control" name="Ort" id="ort" value=""></div>
     </div>
 
     <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Land*</label>
+      <label for="Name" class="col-sm-3 col-form-label">Country*</label>
       <div class="col-sm-9">
         <select class="form-control" id="land" name="Land" style="width: 100%" required>
-          <option selected="selected" value="DE">Deutschland</option>
+          <!--<option selected="selected" value=""></option>-->
         </select>
       </div>
       <!--Länderauswahl mit Suche-->
@@ -100,28 +100,28 @@
     </div>
 
     <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Platzanzahl</label>
+      <label for="Name" class="col-sm-3 col-form-label">Number of spots</label>
       <div class="col-sm-9"><input type="number" class="form-control" name="Platzanzahl" id="platzanzahl" value="0"></div>
     </div>
 
     <div class="form-group row">
-      <label class="col-sm col-form-label">Trinkwasser?</label>
+      <label class="col-sm col-form-label">Drinking water?</label>
       <div class="col-sm">
         <input type="hidden" name="Trinkwasser" value="0" />
         <input type="checkbox" name="Trinkwasser" id="trinkwasser" value="1" />
 
       </div>
-      <label class="col-sm col-form-label">Abwasser?</label>
+      <label class="col-sm col-form-label">Waste water?</label>
       <div class="col-sm">
         <input type="hidden" name="Abwasser" value="0"/>
           <input type="checkbox" name="Abwasser" id="abwasser" value="1"/>
       </div>
-      <label class="col-sm col-form-label">Toilettenentsorgung?</label>
+      <label class="col-sm col-form-label">Grey water?</label>
       <div class="col-sm">
         <input type="hidden" name="Toilettenentsorgung" value="0"/>
           <input type="checkbox" name="Toilettenentsorgung" id="toilette" value="1"/>
       </div>
-      <label class="col-sm col-form-label">Strom?</label>
+      <label class="col-sm col-form-label">Electricity?</label>
       <div class="col-sm">
         <input type="hidden" name="Strom" value="0"/>
           <input type="checkbox" name="Strom" id="strom" value="1"/>
@@ -129,7 +129,7 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-sm col-form-label">Duschen?</label>
+      <label class="col-sm col-form-label">Showers?</label>
       <div class="col-sm">
         <input type="hidden" name="Dusche" value="0"/>
           <input type="checkbox" name="Dusche" id="dusche" value="1"/>
@@ -147,12 +147,12 @@
     </div>
 
     <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Bemerkungen</label>
+      <label for="Name" class="col-sm-3 col-form-label">Notes</label>
       <div class="col-sm-9"><textarea class="form-control" name="Bemerkungen" id="bemerkungen"></textarea></div>
     </div>
 
-    <button type="submit" id="submit" name="Hinzufügen" class="btn btn-success">Hinzufügen</button>
-    <a href="cards.html"><button type="button" class="btn btn-secondary">Abbrechen</button></a>
+    <button type="submit" id="submit" name="Hinzufügen" class="btn btn-success">Add</button>
+    <a href="cards.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
   </form>
 </div>
 </body>

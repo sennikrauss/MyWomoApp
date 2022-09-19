@@ -83,18 +83,3 @@ self.addEventListener('fetch', event => {
     )
   }
 })
-
-/**push Notification von Freiheit*/
-/**self.addEventListener('notificationclick', event => {
-    let notification = event.notification;
-    let action = event.action;
-
-    console.log(notification);
-
-    if(action === 'confirm') {
-        console.log('confirm was chosen');
-        notification.close();
-    } else {
-        console.log(action);
-    }
-});**/

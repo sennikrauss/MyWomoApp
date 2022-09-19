@@ -107,6 +107,14 @@ function createCard(card) {
     }).then((res) => {
       console.log(res);
       window.location.reload();
+    }).catch((error) => {
+      if('indexedDB' in window) {
+        readAllData('cards')
+          .then( data => {
+            console.log('From cache ...', data);
+            updateUI(data);
+          })
+      }
     })
     return false;
   };

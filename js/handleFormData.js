@@ -60,6 +60,13 @@ if (urlParams.get("id")) {
     })
     .catch((err) => {
       console.log(err);
+      if('indexedDB' in window) {
+        readAllData('cards')
+          .then( data => {
+            console.log('From cache ...', data);
+            fillForm(data);
+          })
+      }
     })
 }
 

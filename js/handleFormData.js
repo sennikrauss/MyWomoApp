@@ -34,8 +34,6 @@ if (urlParams.get("id")) {
     document.getElementById('plz').value = data.Plz;
     document.getElementById('ort').value = data.Ort;
     let land = document.getElementById('land');
-    land.value = data.Land;
-    land.innerHTML = data.de;
     let firstOption = document.createElement('option');
     firstOption.value = data.Land;
     firstOption.innerHTML = data.de;

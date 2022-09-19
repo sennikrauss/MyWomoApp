@@ -90,16 +90,18 @@ if (logoutBtn && logoutBtn.style.display!=="none") {
   })
 }
 
-button.addEventListener("click", () => {
-Notification.requestPermission().then(perm => {
-  if (perm === "granted"){
-  new Notification("Yes subscribed!",{
-  body:"You successfully subscribed to our Notification service!",
-  icon: "logo1.png"
+if (button) {
+  button.addEventListener("click", () => {
+    Notification.requestPermission().then(perm => {
+      if (perm === "granted"){
+        new Notification("Yes subscribed!",{
+          body:"You successfully subscribed to our Notification service!",
+          icon: "logo1.png"
+        })
+      }
+    })
   })
-  }
- })
-})
+}
 
 let notification1
 document.addEventListener("visibilitychange",() => {

@@ -3,6 +3,7 @@
   <title></title>
 </head>
 
+<link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"/>
@@ -10,6 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Select2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
 <style>
   .select2-container .select2-selection--single {
     height: 40px;
@@ -28,37 +30,66 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  #location-loader{
+    display: none;
+  }
+
+  #location-loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid black; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+
+  #map {
+    height: 40%;
+    width: 100%;
+    display: none;
+    margin-bottom: 1rem;
+  }
 </style>
 
 <body style="background-color: #ffddd6">
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <div style="margin: 20px" id="create">
-  <h1>Add a new Place</h1>
-  <form name="addPlace" enctype="multipart/form-data" action="" id="form" method="post" class="frmImageUpload">
+  <h1 id="header">Add a new Place</h1>
+  <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload">
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">Name*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" name="name" id="name" value=""></div>
+      <div class="col-sm-9"><input required type="text" class="form-control" name="Name" id="name" value=""></div>
     </div>
+
+    <div class="form-group row" style="margin-right: auto; margin-left: auto">
+      <button class="btn btn-light" type="button" id="location-btn">Meinen Standort verwenden</button>
+      <div id="location-loader"></div>
+    </div>
+
+    <div id="map" class="map"></div>
+
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">Adresse*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" name="adresse" id="adresse" value=""></div>
+      <div class="col-sm-9"><input required type="text" class="form-control" name="Adresse" id="adresse" value=""></div>
     </div>
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">PLZ*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" pattern="[0-9]{5}" name="plz" id="plz" value=""></div>
+      <div class="col-sm-9"><input required type="text" class="form-control" pattern="[0-9]{5}" name="Plz" id="plz" value=""></div>
     </div>
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">Ort*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" name="ort" id="ort" value=""></div>
+      <div class="col-sm-9"><input required type="text" class="form-control" name="Ort" id="ort" value=""></div>
     </div>
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">Land*</label>
       <div class="col-sm-9">
-        <select class="form-control" id="land" name="land" style="width: 100%" required>
+        <select class="form-control" id="land" name="Land" style="width: 100%" required>
           <option selected="selected" value="DE">Deutschland</option>
         </select>
       </div>
@@ -70,53 +101,54 @@
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">Platzanzahl</label>
-      <div class="col-sm-9"><input type="number" class="form-control" name="platzanzahl" id="platzanzahl" value=""></div>
+      <div class="col-sm-9"><input type="number" class="form-control" name="Platzanzahl" id="platzanzahl" value="0"></div>
     </div>
 
     <div class="form-group row">
       <label class="col-sm col-form-label">Trinkwasser?</label>
       <div class="col-sm">
-        <input type="hidden" name="trinkwasser" value="0"/>
-          <input type="checkbox" name="trinkwasser" value="1"/>
+        <input type="hidden" name="Trinkwasser" value="0" />
+        <input type="checkbox" name="Trinkwasser" id="trinkwasser" value="1" />
+
       </div>
       <label class="col-sm col-form-label">Abwasser?</label>
       <div class="col-sm">
-        <input type="hidden" name="abwasser" value="0"/>
-          <input type="checkbox" name="abwasser" value="1"/>
+        <input type="hidden" name="Abwasser" value="0"/>
+          <input type="checkbox" name="Abwasser" id="abwasser" value="1"/>
       </div>
       <label class="col-sm col-form-label">Toilettenentsorgung?</label>
       <div class="col-sm">
-        <input type="hidden" name="toilette" value="0"/>
-          <input type="checkbox" name="toilette" value="1"/>
+        <input type="hidden" name="Toilettenentsorgung" value="0"/>
+          <input type="checkbox" name="Toilettenentsorgung" id="toilette" value="1"/>
       </div>
       <label class="col-sm col-form-label">Strom?</label>
       <div class="col-sm">
-        <input type="hidden" name="strom" value="0"/>
-          <input type="checkbox" name="strom" value="1"/>
+        <input type="hidden" name="Strom" value="0"/>
+          <input type="checkbox" name="Strom" id="strom" value="1"/>
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-sm col-form-label">Duschen?</label>
       <div class="col-sm">
-        <input type="hidden" name="dusche" value="0"/>
-          <input type="checkbox" name="dusche" value="1"/>
+        <input type="hidden" name="Dusche" value="0"/>
+          <input type="checkbox" name="Dusche" id="dusche" value="1"/>
       </div>
       <label class="col-sm col-form-label">WC?</label>
       <div class="col-sm">
-        <input type="hidden" name="wc" value="0"/>
-          <input type="checkbox" name="wc" value="1"/>
+        <input type="hidden" name="WC" value="0"/>
+          <input type="checkbox" name="WC" id="wc" value="1"/>
       </div>
       <label class="col-sm col-form-label">WiFi?</label>
       <div class="col-sm">
-        <input type="hidden" name="wifi" value="0"/>
-          <input type="checkbox" name="wifi" value="1"/>
+        <input type="hidden" name="WiFi" value="0"/>
+          <input type="checkbox" name="WiFi" id="wifi" value="1"/>
       </div>
     </div>
 
     <div class="form-group row">
       <label for="Name" class="col-sm-3 col-form-label">Bemerkungen</label>
-      <div class="col-sm-9"><textarea class="form-control" name="bemerkungen" id="bemerkungen"></textarea></div>
+      <div class="col-sm-9"><textarea class="form-control" name="Bemerkungen" id="bemerkungen"></textarea></div>
     </div>
 
     <button type="submit" id="submit" name="Hinzufügen" class="btn btn-success">Hinzufügen</button>
@@ -124,4 +156,7 @@
   </form>
 </div>
 </body>
-
+<script src="/idb.js"></script>
+<script src="indexedDB.js"></script>
+<script src="js/chooseLocation.js"></script>
+<script src="js/handleFormData.js"></script>

@@ -1,4 +1,29 @@
 const urlParams = new URLSearchParams(window.location.search);
+
+fetch(window.location.origin + "/backend/showCountries.php")
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    let selectionCountries = document.getElementById("land");
+    if (!urlParams.get("id")) {
+      let firstOption = document.createElement('option');
+      firstOption.value = "DE";
+      firstOption.innerHTML = "Deutschland";
+      firstOption.selected = true;
+      selectionCountries.appendChild(firstOption);
+    }
+    data.forEach((country) => {
+      let newEle = document.createElement('option');
+      newEle.value = country.code;
+      newEle.innerHTML = country.de;
+      selectionCountries.appendChild(newEle);
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
 if (urlParams.get("id")) {
   function fillForm(data) {
     document.getElementById('form').name = "editPlace";
@@ -8,7 +33,14 @@ if (urlParams.get("id")) {
     document.getElementById('adresse').value = data.Adresse;
     document.getElementById('plz').value = data.Plz;
     document.getElementById('ort').value = data.Ort;
-    document.getElementById('land').value = data.Land;
+    let land = document.getElementById('land');
+    land.value = data.Land;
+    land.innerHTML = data.de;
+    let firstOption = document.createElement('option');
+    firstOption.value = data.Land;
+    firstOption.innerHTML = data.de;
+    firstOption.selected = true;
+    land.appendChild(firstOption);
     document.getElementById('platzanzahl').value = data.Platzanzahl;
 
     if (data.Trinkwasser === "1") {
@@ -47,7 +79,7 @@ if (urlParams.get("id")) {
     }
 
     document.getElementById('bemerkungen').value = data.Bemerkungen;
-    document.getElementById('submit').innerHTML = "Speichern";
+    document.getElementById('submit').innerHTML = "Submit";
   }
 
   fetch("/backend/cards.php?" + urlParams)
@@ -84,7 +116,9 @@ function editCard() {
   }).then(result => {
     console.log(result);
     return result.text();
+    //return result.json();
   }).then(data => {
+    console.log(data);
     if (data === "successfully updated place"){
       window.location.href = "/cards.html";
     }

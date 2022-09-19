@@ -15,6 +15,7 @@ if (isset($_POST['username'])) {
         //setcookie("userId_for_form", $user['userid'], time()+3600, "/backend/formData.php");
         setcookie("userId", $user['userid'], time()+3600, "/backend/cards.php");
         setcookie("userId", $user['userid'], time()+3600, "/");
+        setcookie("userIdForm", $user['userid'], time()+3600, "/form.html");
         echo "valid user!" . $user['userid'];
         return true;
       }else {

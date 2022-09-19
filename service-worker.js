@@ -19,7 +19,9 @@ const STATIC_FILES = [
   "/403-page.html",
   "/idb.js",
   "/indexedDB.js",
-  "/form.html"
+  "/form.html",
+  "/js/chooseLocation.js",
+  "/js/handleFormData.js"
 ].map(url => new Request(url, {credentials: 'include'}));
 
 self.addEventListener("install", event => {
@@ -55,8 +57,12 @@ self.addEventListener('fetch', event => {
           const clonedResponse = res.clone();
           clonedResponse.json()
             .then(data => {
-              for (let key in data) {
-                writeData("cards", data[key]);
+              if(Array.isArray(data)){
+                for (let key in data) {
+                  writeData("cards", data[key]);
+                }
+              }else {
+                writeData("cards", data)
               }
             })
           return res;

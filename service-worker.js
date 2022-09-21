@@ -2,7 +2,7 @@ importScripts('/idb.js');
 importScripts('/indexedDB.js');
 
 const CACHE_VERSION = 1;
-const DOMAIN_BACKEND = 'http://localhost:4201/backend';
+const DOMAIN_BACKEND = 'http://localhost:4200/backend';
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
 const STATIC_FILES = [

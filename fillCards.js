@@ -103,15 +103,36 @@ function createCard(card) {
       method: "POST",
       body: data
     }).then((result) => {
-      return result.json();
+      return result.text();
     }).then((res) => {
-      if('indexedDB' in window) {
-        deleteOneData("cards", card.id);
-      }
       console.log(res);
-      window.location.reload();
+      if (res === "successfully deleted place."){
+        if('indexedDB' in window) {
+          deleteOneData("cards", card.id);
+        }
+        console.log(res);
+        window.location.reload();
+      }
     }).catch((error) => {
       console.error(error);
+      if('serviceWorker' in navigator && 'SyncManager' in window) {
+        navigator.serviceWorker.ready
+          .then( sw => {
+            data.append("_id", new Date().toISOString());
+            const json = Object.fromEntries(data);
+            console.log(json);
+            writeData('sync-delete-cards', json)
+              .then(() => {
+                return sw.sync.register('sync-deleted-card').then(() => {
+                  window.location.reload();
+                });
+              })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      }
+
     })
     return false;
   };

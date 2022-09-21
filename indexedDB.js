@@ -1,4 +1,4 @@
-const db = idb.openDB('cards-store', 4, {
+const db = idb.openDB('cards-store', 6, {
   upgrade(db) {
     const store = db.createObjectStore('cards', {
       keyPath: 'id',
@@ -12,7 +12,20 @@ const db = idb.openDB('cards-store', 4, {
       autoIncrement: true,
     });
     store2.createIndex('_id', '_id');
-    },
+
+    // Create another store of objects
+    const store3 = db.createObjectStore('sync-edit-cards', {
+      keyPath: '_id',
+      autoIncrement: true,
+    });
+    store3.createIndex('_id', '_id');
+
+    const store4 = db.createObjectStore('sync-delete-cards', {
+      keyPath: '_id',
+      autoIncrement: true,
+    });
+    store4.createIndex('_id', '_id');
+  }
 });
 
 function writeData(st, data) {

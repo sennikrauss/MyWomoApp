@@ -114,6 +114,24 @@ function editCard() {
     }
   }).catch(error => {
     console.error(error);
+    if('serviceWorker' in navigator && 'SyncManager' in window) {
+      navigator.serviceWorker.ready
+        .then( sw => {
+          data.append("_id", new Date().toISOString());
+          const json = Object.fromEntries(data);
+          console.log(json);
+          writeData('sync-edit-cards', json)
+            .then(() => {
+              console.log("edit data")
+              return sw.sync.register('sync-new-edit-card').then(() => {
+                window.location.href = "/cards.html";
+              });
+            })
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   })
   return false;
 }

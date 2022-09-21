@@ -1,7 +1,7 @@
 importScripts('/idb.js');
 importScripts('/indexedDB.js');
 
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 1;
 const DOMAIN_BACKEND = 'http://localhost:4201/backend';
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
@@ -114,6 +114,61 @@ self.addEventListener('sync', event => {
               if (result === "successfully inserted data"){
                 console.log('Data sent to backend ...', result);
                 deleteOneData('sync-cards', data._id)
+              }
+            }).catch( err => {
+              console.log('Error while sending data to backend ...', err);
+            })
+          }
+        })
+    );
+  }
+  if (event.tag === 'sync-new-edit-card'){
+    event.waitUntil(
+      readAllData('sync-edit-cards')
+        .then( dataArray => {
+          for(let data of dataArray) {
+            console.log('data from IndexedDB', data);
+            const formData = new FormData();
+            for (let key in data) {
+              formData.append(key, data[key]);
+            }
+            fetch(DOMAIN_BACKEND + "/updateCard.php", {
+              method: 'POST',
+              body: formData
+            }).then( response => {
+              return response.text();
+            }).then(result => {
+              if (result === "successfully updated place"){
+                console.log('Data sent to backend ...', result);
+                deleteOneData('sync-edit-cards', data._id)
+              }
+            }).catch( err => {
+              console.log('Error while sending data to backend ...', err);
+            })
+          }
+        })
+    );
+  }
+
+  if (event.tag === 'sync-deleted-card'){
+    event.waitUntil(
+      readAllData('sync-delete-cards')
+        .then( dataArray => {
+          for(let data of dataArray) {
+            console.log('data from IndexedDB', data);
+            const formData = new FormData();
+            for (let key in data) {
+              formData.append(key, data[key]);
+            }
+            fetch(DOMAIN_BACKEND + "/deleteCard.php", {
+              method: 'POST',
+              body: formData
+            }).then( response => {
+              return response.text();
+            }).then(result => {
+              if (result === "successfully deleted place."){
+                console.log('Data sent to backend ...', result);
+                deleteOneData('sync-edit-cards', data._id)
               }
             }).catch( err => {
               console.log('Error while sending data to backend ...', err);

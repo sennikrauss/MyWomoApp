@@ -24,6 +24,5 @@ where id = {$_POST['id']}";
 
   if (connect() -> query($sql) === TRUE) {
     echo "successfully updated place";
-    // echo json_encode($_POST);
   }
 }

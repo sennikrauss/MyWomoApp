@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['Name'])) {
+if (isset($_POST['addNewCard'])) {
   require_once "mysqli.php";
 
   $_POST['Trinkwasser'] = (isset($_POST['Trinkwasser'])) ? intval($_POST['Trinkwasser']) : 0; // returns 0 or 1

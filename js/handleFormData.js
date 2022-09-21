@@ -1,18 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-fetch(window.location.origin + "/backend/showCountries.php")
+fetch("json/countries.json")
   .then((res) => {
     return res.json();
   })
   .then((data) => {
     let selectionCountries = document.getElementById("land");
-    if (!urlParams.get("id")) {
-      let firstOption = document.createElement('option');
-      firstOption.value = "DE";
-      firstOption.innerHTML = "Deutschland";
-      firstOption.selected = true;
-      selectionCountries.appendChild(firstOption);
-    }
     data.forEach((country) => {
       let newEle = document.createElement('option');
       newEle.value = country.code;
@@ -91,7 +84,7 @@ if (urlParams.get("id")) {
     .catch((err) => {
       console.log(err);
       if('indexedDB' in window) {
-        readAllData('cards')
+        readSingleDate('cards', urlParams.get('id'))
           .then( data => {
             console.log('From cache ...', data);
             fillForm(data);
@@ -114,7 +107,6 @@ function editCard() {
   }).then(result => {
     console.log(result);
     return result.text();
-    //return result.json();
   }).then(data => {
     console.log(data);
     if (data === "successfully updated place"){
@@ -137,21 +129,45 @@ function addNewCard() {
   let data = new FormData(form);
   let userId = getCookie("userIdForm");
   data.append("userId", userId);
+  data.append("addNewCard", "ok");
   /* Bild kommt später in Form noch hinzu --> erstmal nur dummy null: */
   data.append("imageType", "null");
   data.append("imageData", "null");
 
+  sendDataToBackend(data);
+  return false;
+}
+
+function sendDataToBackend(data) {
   fetch("backend/addCard.php", {
     method: "POST",
     body: data
   }).then(result => {
     return result.text();
   }).then(response => {
+    console.log(response);
     if (response === "successfully inserted data"){
       window.location.href = "/cards.html";
     }
   }).catch(error => {
     console.error(error);
+    if('serviceWorker' in navigator && 'SyncManager' in window) {
+      navigator.serviceWorker.ready
+        .then( sw => {
+          data.append("_id", new Date().toISOString());
+          const json = Object.fromEntries(data);
+          console.log(json);
+          writeData('sync-cards', json)
+            .then(() => {
+              console.log("written data")
+              return sw.sync.register('sync-new-card').then(() => {
+                window.location.href = "/cards.html";
+              });
+            })
+        })
+        .catch(err => {
+        console.log(err);
+      })
+    }
   })
-  return false;
 }

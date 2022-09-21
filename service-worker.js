@@ -1,7 +1,8 @@
 importScripts('/idb.js');
 importScripts('/indexedDB.js');
 
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
+const DOMAIN_BACKEND = 'http://localhost:4201/backend';
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
 const STATIC_FILES = [
@@ -21,7 +22,8 @@ const STATIC_FILES = [
   "/indexedDB.js",
   "/form.html",
   "/js/chooseLocation.js",
-  "/js/handleFormData.js"
+  "/js/handleFormData.js",
+  "/json/countries.json"
 ].map(url => new Request(url, {credentials: 'include'}));
 
 self.addEventListener("install", event => {
@@ -49,7 +51,7 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-  const url = 'http://localhost:4200/backend/cards.php';
+  const url = DOMAIN_BACKEND + "/cards.php";
   if (event.request.url.indexOf(url) >= 0) {
     event.respondWith(
       fetch(event.request)
@@ -87,5 +89,37 @@ self.addEventListener('fetch', event => {
           }
         })
     )
+  }
+})
+
+self.addEventListener('sync', event => {
+  console.log('service worker --> background syncing ...', event);
+  if(event.tag === 'sync-new-card') {
+    console.log('service worker --> syncing new posts ...');
+    event.waitUntil(
+      readAllData('sync-cards')
+        .then( dataArray => {
+          for(let data of dataArray) {
+            console.log('data from IndexedDB', data);
+            const formData = new FormData();
+            for (let key in data) {
+              formData.append(key, data[key]);
+            }
+            fetch(DOMAIN_BACKEND + "/addCard.php", {
+              method: 'POST',
+              body: formData
+            }).then( response => {
+                return response.text();
+            }).then(result => {
+              if (result === "successfully inserted data"){
+                console.log('Data sent to backend ...', result);
+                deleteOneData('sync-cards', data._id)
+              }
+            }).catch( err => {
+              console.log('Error while sending data to backend ...', err);
+            })
+          }
+        })
+    );
   }
 })

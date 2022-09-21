@@ -105,16 +105,13 @@ function createCard(card) {
     }).then((result) => {
       return result.json();
     }).then((res) => {
+      if('indexedDB' in window) {
+        deleteOneData("cards", card.id);
+      }
       console.log(res);
       window.location.reload();
     }).catch((error) => {
-      if('indexedDB' in window) {
-        readAllData('cards')
-          .then( data => {
-            console.log('From cache ...', data);
-            updateUI(data);
-          })
-      }
+      console.error(error);
     })
     return false;
   };

@@ -1,5 +1,5 @@
 # MyWomoApp
-In our MyWomoApp you can add your travel places ...
+In our MyWomoApp you can manage your travel destinations ...
 We implemented a PWA, so you can add, edit and delete data in offline mode
 and when you are back online it will be updated.
 

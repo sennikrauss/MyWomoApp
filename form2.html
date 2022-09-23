@@ -2,24 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formular</title>
-    <link href="/style.css" rel="stylesheet" />
-    <link href="/style.css" type="text/css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?famuly=Quisand&display=swap" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Quisand&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-<div class="containerform">
-    <div class="contact-box">
-        <div class="left"></div>
-        <div class="right">
-            <h2>Add a new Place</h2>
-            <input type="text" class="field" placeholder="Your Name">
-            <input type="text" class="field" placeholder="Your Adress ">
-            <input type="text" class="field" placeholder="pzl">
-            <textarea class="field" placeholder="Message"></textarea>
+<section class="containerform">
+    <div class="containerbox">
+        <div class="form-box">
+           <form action="">
+               <input type="text" placeholder ="Name*" name="name" id="name">
+               <input type="text" placeholder ="adresse" name="adresse" id="adresse">
+               <input placeholder="plz" name="plz" id="plz">
+               <input type="text" placeholder ="Ort" name="ort" id="ort">
+                   <select class="form-control" id="land" name="land" style="width: 100%" required>
+                       <option selected="selected" value="DE">Deutschland</option>
+                   </select>
+               <input type="number" placeholder ="Platzanzahl">
+               <label for="Name" class="col-sm-3 col-form-label" style="color:white">please shoose some of the options*</label>
+               <textarea name="" placeholder="Bericht" cols="30" rows="10"></textarea>
+               <button>Speichern</button>
+
+           </form>
         </div>
     </div>
-</div>
+</section>
 </body>

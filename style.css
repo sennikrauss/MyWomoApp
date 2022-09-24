@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap');
 
 *
 {
@@ -386,7 +386,8 @@ form.sign-in-form {
 }
 
 .btn:hover {
-  background-color: #4d84e2;
+  background-color: #ffd8d8;
+  color:black;
 }
 .panels-container {
   position: absolute;
@@ -787,3 +788,137 @@ form.sign-in-form {
   border-radius: 25px;
 }
 
+/**form**/
+
+.containerform{
+ width: 100%;
+ min-height: 100vh;
+ background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(https://images.t-online.de/2022/08/I1Vgvnol65vX/839x99:1523x857/fit-in/1800x0/zu-hause-in-der-natur-urlaub-in-wohnwagen-und-wohnmobil-steht-hoch-im-kurs.jpg);
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center center;
+ padding: 50px;
+}
+
+.containerbox{
+ width: 92%;
+ margin: 0 auto;
+}
+.containerform .form-box{
+ max-width: 700px;
+ background: rgba(0,0,0,0.75);
+ padding: 10px;
+ margin: 0 auto;
+ border-radius: 10px;
+}
+
+.containerform .form-box form{
+ width: 100%;
+}
+
+.containerform .form-box form input{
+ width: 100%;
+ height: 45px;
+ border: 1px solid #FA9D8E;
+ padding:0 20px;
+ border-radius: 5px;
+ background: transparent;
+ margin-bottom: 20px;
+ color: #fff;
+ outline: none;
+
+}
+
+.containerform .form-box form select{
+ width: 100%;
+ height: 45px;
+ border: 1px solid #FA9D8E;
+ padding:0 20px;
+ border-radius: 5px;
+ background: transparent;
+ margin-bottom: 10px;
+ color: #fff;
+ outline: none;
+
+}
+
+.containerform .form-box form textarea {
+width: 100%;
+border: 1px solid #FA9D8E;
+padding:0 20px;
+border-radius: 5px;
+background: transparent;
+margin-bottom: 10px;
+padding-top: 20px;
+color: #fff;
+outline: none;
+font-family: 'Poppins', sans-serif;
+
+ }
+
+.form-box form input [type="text"]{
+  width: 49%;
+}
+
+h1{padding-bottom: 20px;
+   font-size: 35px;
+  }
+  .blockbutton {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    padding: 5px 28px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+.button-group{
+  margin-left: 5px;
+}
+.blockbutton:hover{
+  background-color: #ffd8d8;
+  color: black;
+}
+
+
+/**
+input [type="text"]{
+  float: right;
+}
+
+.form-box form input [type="location"]{
+  background-color: #fa732a;
+  color: #fff;
+  font-size: 18px;
+}
+
+.form-box form input [type="location"]:hover{
+ background-color: #000;
+ transition: 0.3s ease;
+
+}
+
+input[type="submit"] {
+  background-color: white;
+  width: 200px;
+  border: 3px solid #c9c9c9;
+  font-size: 24pt;
+  margin: 5px;
+  color: #969696;
+}**/
+
+
+/**form responsive**/
+
+@media(max-width: 768px){
+  .form-box{
+   max-width:100%;
+  }
+  .form-box form input[type="text"]{
+    width: 100%;
+  }
+}

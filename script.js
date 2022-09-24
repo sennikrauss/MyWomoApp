@@ -96,7 +96,7 @@ if (button) {
       if (perm === "granted"){
         new Notification("Yes subscribed!",{
           body:"You successfully subscribed to our Notification service!",
-          icon: "logo1.png"
+          icon: "logoicon2.png"
         })
       }
     })
@@ -109,18 +109,13 @@ document.addEventListener("visibilitychange",() => {
    notification1 = new Notification("Come back please", {
    body: "Pleaaase",
    tag: "Come Back",
+   icon: "logoicon2.png"
    })
    } else{
      notification1.close()
   }
 })
 
-
-/**document.getElementById("list").addEventListener ("click", () => {
- Notification.requestPermission().then(perm =>{
-  alert("hi")
- })
-})**/
 
 let notification
 let interval
@@ -131,6 +126,7 @@ document.addEventListener("visibilitychange",() => {
     notification = new Notification("Come back pleaaase", {
        body: "you have been gone for" + Math.round( (new Date()-leaveDate) /1000) + " seconds.",
        tag: "Come Back",
+       icon: "logoicon2.png"
        })
    },10000)
    } else{
@@ -139,19 +135,4 @@ document.addEventListener("visibilitychange",() => {
   }
 })
 
-/**data showing**/
-/**button.addEventListener("click", () => {
-Notification.requestPermission().then(perm => {
-  if (perm === "granted"){
-  const notification = new Notification ("Successfully subscribed!", {
-  body:"You successfully subscribed to our Notification service!",
-  data:{ hello: "world"},
-  icon: "logo1.png"
-  })
-    notification.addEventListener("error", e => {
-     console.log(e)
-     alert("error")
-    })
-  }
- })
-})**/
+

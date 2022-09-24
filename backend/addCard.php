@@ -3,6 +3,21 @@
 if (isset($_POST['addNewCard'])) {
   require_once "mysqli.php";
 
+  if (count($_FILES) > 0) {
+    if (is_uploaded_file($_FILES['userImage']['tmp_name'])) {
+
+      $imgData = addslashes(file_get_contents($_FILES['userImage']['tmp_name']));
+      $imageProperties = getimageSize($_FILES['userImage']['tmp_name']);
+      $imageProperties = $imageProperties['mime'];
+    }
+
+    if (isset($_FILES['imageData'])) {
+      $imgData = addslashes(file_get_contents($_FILES['imageData']['tmp_name']));
+      $imageProperties = getimageSize($_FILES['imageData']['tmp_name']);
+      $imageProperties = $imageProperties['mime'];
+    }
+  }
+
   $_POST['Trinkwasser'] = (isset($_POST['Trinkwasser'])) ? intval($_POST['Trinkwasser']) : 0; // returns 0 or 1
   $_POST['Abwasser'] = (isset($_POST['Abwasser'])) ? intval($_POST['Abwasser']) : 0; // returns 0 or 1
   $_POST['Toilettenentsorgung'] = (isset($_POST['Toilettenentsorgung'])) ? intval($_POST['Toilettenentsorgung']) : 0; // returns 0 or 1
@@ -28,7 +43,7 @@ if (isset($_POST['addNewCard'])) {
                             '{$_POST['WC']}',
                             '{$_POST['WiFi']}',
                             '{$_POST['imageType']}',
-                            '{$_POST['imageData']}',
+                            '{$imgData}',
                             '{$_POST['Bemerkungen']}',
                             {$_POST['userId']}
                             )";

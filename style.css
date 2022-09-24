@@ -386,7 +386,8 @@ form.sign-in-form {
 }
 
 .btn:hover {
-  background-color: #4d84e2;
+  background-color: #ffd8d8;
+  color:black;
 }
 .panels-container {
   position: absolute;
@@ -862,8 +863,30 @@ font-family: 'Poppins', sans-serif;
 h1{padding-bottom: 20px;
    font-size: 35px;
   }
+  .blockbutton {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    padding: 5px 28px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+  }
 
-/**.testform{
+.button-group{
+  margin-left: 5px;
+}
+.blockbutton:hover{
+  background-color: #ffd8d8;
+  color: black;
+}
+
+
+/**
+input [type="text"]{
   float: right;
 }
 
@@ -877,6 +900,15 @@ h1{padding-bottom: 20px;
  background-color: #000;
  transition: 0.3s ease;
 
+}
+
+input[type="submit"] {
+  background-color: white;
+  width: 200px;
+  border: 3px solid #c9c9c9;
+  font-size: 24pt;
+  margin: 5px;
+  color: #969696;
 }**/
 
 

@@ -69,8 +69,7 @@
                    <script type="text/javascript">
                    $("#land").select2({});
                    </script>
-
-               <input type="number" placeholder ="Platzanzahl">
+               <input type="number" name="Platzanzahl" id="platzanzahl" value="0" placeholder ="Number of spots">
 
                <label class="col-sm col-form-label" style="color:white">Grey water?</label>
                <div class="col-sm">
@@ -89,22 +88,22 @@
                    <input type="checkbox" name="Strom" id="strom" value="1"/>
                </div>
 
-            <label class="col-sm col-form-label" style="color:white">Shower?</label>
+            <label class="col-sm col-form-label" style="color:white">Showers?</label>
             <div class="col-sm">
-                <input type="hidden" name="dusche" value="0"/>
-                <input type="checkbox" name="dusche" value="1"/>
+                <input type="hidden" name="WC" value="0"/>
+                <input type="checkbox" name="Dusche" id="dusche" value="1"/>
             </div>
             <label class="col-sm col-form-label" style="color:white"> WC?</label>
             <div class="col-sm">
                 <input type="hidden" name="wc" value="0"/>
-                <input type="checkbox" name="wc" value="1"/>
+                <input type="checkbox" name="WC" id="wc" value="1"/>
             </div>
             <label class="col-sm col-form-label" style="color:white">WiFi?</label>
             <div class="col-sm">
-                <input type="hidden" name="wifi" value="0"/>
-                <input type="checkbox" name="wifi" value="1"/>
+                <input type="hidden" name="WiFi" value="0"/>
+                <input type="checkbox" name="WiFi" id="wifi" value="1"/>
             </div>
-               <textarea name="" placeholder="Remarks" cols="30" rows="10" name="bemerkungen" id="bemerkungen"></textarea>
+               <textarea name="" placeholder="Notes" cols="30" rows="10" name="Bemerkungen" id="bemerkungen"></textarea>
                <!--btn-->
                <label for="Name" class="col-sm-3 col-form-label" style="color:white"> you can share your location : <a href="cards.html" id="location-btn">My location</a>
                </label>
@@ -122,3 +121,7 @@
     </div>
 </section>
 </body>
+<script src="/idb.js"></script>
+<script src="indexedDB.js"></script>
+<script src="js/chooseLocation.js"></script>
+<script src="js/handleFormData.js"></script>

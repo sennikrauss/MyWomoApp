@@ -15,48 +15,81 @@
 <!-- Select2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+<style>
+  #create #player, #create #canvas {
+    width: 512px;
+    max-width: 100%;
+    display: none;
+    margin: auto;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  #location-loader{
+    display: none;
+  }
+
+  #location-loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid black; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+
+  #map {
+    height: 40%;
+    width: 100%;
+    display: none;
+    margin-bottom: 1rem;
+  }
+</style>
 
 
 <body>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <section class="containerform">
     <div class="containerbox">
         <div class="form-box">
-           <form action="">
+           <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload">
                <h1 id="newplace" style="color:white" >Add a new Place</h1>
-               <input type="text" placeholder ="Name*" name="name" id="name">
-               <input type="text" placeholder ="Lastname*" name="name" id="lastname" class="testform">
-               <input type="text" placeholder ="adresse" name="adresse" id="adresse">
-               <input placeholder="plz" name="plz" id="plz">
-               <input type="text" placeholder ="Ort" name="ort" id="ort">
-                   <select class="form-control" id="land" name="land" style="width: 100%" required>
-                       <option selected="selected" value="DE">Deutschland</option>
-                   </select>
-               <input type="number" placeholder ="Platzanzahl">
-               <label for="Name" class="col-sm-3 col-form-label" style="color:white">please shoose some of this options*</label>
+               <input type="text" placeholder ="Name*" name="Name" id="name">
+               <input type="text" placeholder ="Address*" name="Adresse" id="adresse">
+               <input placeholder="Postcode*" pattern="[0-9]{5}" name="Plz" id="plz" >
+               <input type="text" placeholder ="District*" name="Ort" id="ort">
 
-               <label class="col-sm col-form-label" style="color:white">Trinkwasser?</label>
+                   <select class="form-control" id="land" name="land" style="width: 100%" required>
+                       <option value="" disabled selected>Select country</option>
+                   </select>
+                   <!--Länderauswahl mit Suche-->
+                   <script type="text/javascript">
+                   $("#land").select2({});
+                   </script>
+
+               <input type="number" placeholder ="Platzanzahl">
+
+               <label class="col-sm col-form-label" style="color:white">Grey water?</label>
                <div class="col-sm">
-                   <input type="hidden" name="trinkwasser" value="0"/>
-                   <input type="checkbox" name="trinkwasser" value="1"/>
+                   <input type="hidden" name="Toilettenentsorgung" value="0"/>
+                   <input type="checkbox" name="Toilettenentsorgung" id="toilette" value="1"/>
                </div>
 
-               <label class="col-sm col-form-label" style="color:white">Abwasser?</label>
+               <label class="col-sm col-form-label" style="color:white">Waste water?</label>
                <div class="col-sm">
                    <input type="hidden" name="abwasser" value="0"/>
                    <input type="checkbox" name="abwasser" value="1"/>
                </div>
-               <label class="col-sm col-form-label" style="color:white">Toilettenentsorgung?</label>
+               <label class="col-sm col-form-label" style="color:white">Electricity?</label>
                <div class="col-sm">
-                   <input type="hidden" name="toilette" value="0"/>
-                   <input type="checkbox" name="toilette" value="1"/>
-               </div>
-               <label class="col-sm col-form-label" style="color:white">Strom?</label>
-               <div class="col-sm">
-                   <input type="hidden" name="strom" value="0"/>
-                   <input type="checkbox" name="strom" value="1"/>
+                   <input type="hidden"name="Strom" value="0"/>
+                   <input type="checkbox" name="Strom" id="strom" value="1"/>
                </div>
 
-            <label class="col-sm col-form-label" style="color:white">Duschen?</label>
+            <label class="col-sm col-form-label" style="color:white">Shower?</label>
             <div class="col-sm">
                 <input type="hidden" name="dusche" value="0"/>
                 <input type="checkbox" name="dusche" value="1"/>
@@ -71,9 +104,12 @@
                 <input type="hidden" name="wifi" value="0"/>
                 <input type="checkbox" name="wifi" value="1"/>
             </div>
-               <textarea name="" placeholder="Bericht" cols="30" rows="10"></textarea>
+               <textarea name="" placeholder="Remarks" cols="30" rows="10" name="bemerkungen" id="bemerkungen"></textarea>
                <!--btn-->
-               <a href="cards.html"><button type="button" class="blockbutton" id="location-btn ">My location</button></a>
+               <label for="Name" class="col-sm-3 col-form-label" style="color:white"> you can share your location : <a href="cards.html" id="location-btn">My location</a>
+               </label>
+               <div id="location-loader"></div>
+               <div id="map" class="map"></div>
                <button type="button" class="blockbutton">bild hochladen</button>
                <button id="takePic " class="blockbutton">Bild aufnehmen</button>
 

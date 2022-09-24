@@ -7,6 +7,7 @@ let logoutBtn = document.getElementById("logoutBtn");
 let homeBtn = document.getElementById("home");
 let loginBtn = document.getElementById("loginBtn");
 let installButton3 = document.getElementById("install3");
+let button = document.getElementById("enablebutton");
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -40,6 +41,11 @@ if (installButton && installButton2){
       installEvent = e;
     });
 
+    if (installEvent === null) {
+      installButton.style.display = "none";
+      installButton2.style.display = "none";
+    }
+
     installButton.addEventListener("click", function() {
       installEvent.prompt();
     });
@@ -57,6 +63,10 @@ if (installButton3 && installButton3.style.display !== "none") {
     console.log("Ready to install...");
     installEvent = e;
   });
+
+  if (installEvent === null) {
+    installButton3.style.display = "none";
+  }
 
   installButton3.addEventListener("click", function() {
     installEvent.prompt();
@@ -80,26 +90,28 @@ if (logoutBtn && logoutBtn.style.display!=="none") {
   })
 }
 
-button.addEventListener("click", () => {
-Notification.requestPermission().then(perm => {
-  if (perm === "granted"){
-  new Notification("Yes subscribed!",{
-  body:"You successfully subscribed to our Notification service!",
-  icon: "logo1.png"
+if (button) {
+  button.addEventListener("click", () => {
+    Notification.requestPermission().then(perm => {
+      if (perm === "granted"){
+        new Notification("Yes subscribed!",{
+          body:"You successfully subscribed to our Notification service!",
+          icon: "logo1.png"
+        })
+      }
+    })
   })
-  }
- })
-})
+}
 
-let notification
+let notification1
 document.addEventListener("visibilitychange",() => {
   if(document.visibilityState === "hidden"){
-   notification = new Notification("Come back please", {
+   notification1 = new Notification("Come back please", {
    body: "Pleaaase",
    tag: "Come Back",
    })
    } else{
-     notification.close()
+     notification1.close()
   }
 })
 
@@ -108,21 +120,19 @@ document.addEventListener("visibilitychange",() => {
  Notification.requestPermission().then(perm =>{
   alert("hi")
  })
-})
+})**/
 
 let notification
 let interval
 document.addEventListener("visibilitychange",() => {
   if(document.visibilityState === "hidden"){
-  const leaveDate = new Date()
-   interval () = setInterval( ()=> {
+  const leaveDate = new Date();
+  interval = setInterval( ()=> {
     notification = new Notification("Come back pleaaase", {
-       body: "you have been gone for
-        ${ Math.round( (new Date()-leaveDate) /1000
-       )} seconds ",
+       body: "you have been gone for" + Math.round( (new Date()-leaveDate) /1000) + " seconds.",
        tag: "Come Back",
        })
-   },100)
+   },10000)
    } else{
      if (interval) clearInterval(interval)
      if (notification) notification.close()
@@ -145,72 +155,3 @@ Notification.requestPermission().then(perm => {
   }
  })
 })**/
-
-
-/**von Freiheit**/
-
-/**let enableNotificationsButtons = document.querySelectorAll('.enable-notifications');
-
-function displayConfirmNotification() {
-    if('serviceWorker' in navigator) {
-        let options = {
-            body: 'You successfully subscribed to our Notification service!',
-            icon: '/src/images/icons/fiw96x96.png',
-            image: '/src/images/htw-sm.jpg',
-            lang: 'de-DE',
-            vibrate: [100, 50, 200],
-            badge: '/src/images/icons/fiw96x96.png',
-            tag: 'confirm-notification',
-            renotify: true,
-            actions: [
-                { action: 'confirm', title: 'Ok', icon: '/src/images/icons/fiw96x96.png' },
-                { action: 'cancel', title: 'Cancel', icon: '/src/images/icons/fiw96x96.png' },
-            ]
-        };
-
-        navigator.serviceWorker.ready
-            .then( sw => {
-                sw.showNotification('Successfully subscribed (from SW)!', options);
-            });
-    }
-}
-
-function configurePushSubscription() {
-    if(!('serviceWorker' in navigator)) {
-        return
-    }
-
-    let swReg;
-    navigator.serviceWorker.ready
-        .then( sw => {
-            swReg = sw;
-            return sw.pushManager.getSubscription();
-        })
-        .then( sub => {
-            if(sub === null) {
-                swReg.pushManager.subscribe();
-            } else {
-                // already subscribed
-            }
-        });
-}
-
-
-function askForNotificationPermission() {
-    Notification.requestPermission( result => {
-        console.log('User choice', result);
-        if(result !== 'granted') {
-            console.log('No notification permission granted');
-        } else {
-            // displayConfirmNotification();
-            configurePushSubscription();
-        }
-    });
-}
-
-if('Notification' in window && 'serviceWorker' in navigator) {
-    for(let button of enableNotificationsButtons) {
-        button.style.display = 'inline-block';
-        button.addEventListener('click', askForNotificationPermission);
-    }
-}**/

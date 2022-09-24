@@ -2,6 +2,7 @@ importScripts('/idb.js');
 importScripts('/indexedDB.js');
 
 const CACHE_VERSION = 1;
+const DOMAIN_BACKEND = 'http://localhost:4200/backend';
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
 const STATIC_FILES = [
@@ -19,7 +20,10 @@ const STATIC_FILES = [
   "/403-page.html",
   "/idb.js",
   "/indexedDB.js",
-  "/form.html"
+  "/form.html",
+  "/js/chooseLocation.js",
+  "/js/handleFormData.js",
+  "/json/countries.json"
 ].map(url => new Request(url, {credentials: 'include'}));
 
 self.addEventListener("install", event => {
@@ -47,7 +51,7 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-  const url = 'http://localhost:4200/backend/cards.php';
+  const url = DOMAIN_BACKEND + "/cards.php";
   if (event.request.url.indexOf(url) >= 0) {
     event.respondWith(
       fetch(event.request)
@@ -55,8 +59,12 @@ self.addEventListener('fetch', event => {
           const clonedResponse = res.clone();
           clonedResponse.json()
             .then(data => {
-              for (let key in data) {
-                writeData("cards", data[key]);
+              if(Array.isArray(data)){
+                for (let key in data) {
+                  writeData("cards", data[key]);
+                }
+              }else {
+                writeData("cards", data)
               }
             })
           return res;
@@ -84,17 +92,89 @@ self.addEventListener('fetch', event => {
   }
 })
 
-/**push Notification von Freiheit*/
-/**self.addEventListener('notificationclick', event => {
-    let notification = event.notification;
-    let action = event.action;
+self.addEventListener('sync', event => {
+  console.log('service worker --> background syncing ...', event);
+  if(event.tag === 'sync-new-card') {
+    console.log('service worker --> syncing new posts ...');
+    event.waitUntil(
+      readAllData('sync-cards')
+        .then( dataArray => {
+          for(let data of dataArray) {
+            console.log('data from IndexedDB', data);
+            const formData = new FormData();
+            for (let key in data) {
+              formData.append(key, data[key]);
+            }
+            fetch(DOMAIN_BACKEND + "/addCard.php", {
+              method: 'POST',
+              body: formData
+            }).then( response => {
+                return response.text();
+            }).then(result => {
+              if (result === "successfully inserted data"){
+                console.log('Data sent to backend ...', result);
+                deleteOneData('sync-cards', data._id)
+              }
+            }).catch( err => {
+              console.log('Error while sending data to backend ...', err);
+            })
+          }
+        })
+    );
+  }
+  if (event.tag === 'sync-new-edit-card'){
+    event.waitUntil(
+      readAllData('sync-edit-cards')
+        .then( dataArray => {
+          for(let data of dataArray) {
+            console.log('data from IndexedDB', data);
+            const formData = new FormData();
+            for (let key in data) {
+              formData.append(key, data[key]);
+            }
+            fetch(DOMAIN_BACKEND + "/updateCard.php", {
+              method: 'POST',
+              body: formData
+            }).then( response => {
+              return response.text();
+            }).then(result => {
+              if (result === "successfully updated place"){
+                console.log('Data sent to backend ...', result);
+                deleteOneData('sync-edit-cards', data._id)
+              }
+            }).catch( err => {
+              console.log('Error while sending data to backend ...', err);
+            })
+          }
+        })
+    );
+  }
 
-    console.log(notification);
-
-    if(action === 'confirm') {
-        console.log('confirm was chosen');
-        notification.close();
-    } else {
-        console.log(action);
-    }
-});**/
+  if (event.tag === 'sync-deleted-card'){
+    event.waitUntil(
+      readAllData('sync-delete-cards')
+        .then( dataArray => {
+          for(let data of dataArray) {
+            console.log('data from IndexedDB', data);
+            const formData = new FormData();
+            for (let key in data) {
+              formData.append(key, data[key]);
+            }
+            fetch(DOMAIN_BACKEND + "/deleteCard.php", {
+              method: 'POST',
+              body: formData
+            }).then( response => {
+              return response.text();
+            }).then(result => {
+              if (result === "successfully deleted place."){
+                console.log('Data sent to backend ...', result);
+                deleteOneData('sync-edit-cards', data._id)
+              }
+            }).catch( err => {
+              console.log('Error while sending data to backend ...', err);
+            })
+          }
+        })
+    );
+  }
+})

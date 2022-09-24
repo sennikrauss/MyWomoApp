@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formular</title>
     <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css?family=Quisand&display=swap" rel="stylesheet" />
 </head>
 
@@ -14,7 +15,9 @@
     <div class="containerbox">
         <div class="form-box">
            <form action="">
+               <h1 id="newplace" style="color:white" >Add a new Place</h1>
                <input type="text" placeholder ="Name*" name="name" id="name">
+               <input type="text" placeholder ="Lastname*" name="name" id="lastname" class="testform">
                <input type="text" placeholder ="adresse" name="adresse" id="adresse">
                <input placeholder="plz" name="plz" id="plz">
                <input type="text" placeholder ="Ort" name="ort" id="ort">
@@ -22,11 +25,54 @@
                        <option selected="selected" value="DE">Deutschland</option>
                    </select>
                <input type="number" placeholder ="Platzanzahl">
-               <label for="Name" class="col-sm-3 col-form-label" style="color:white">please shoose some of the options*</label>
+               <label for="Name" class="col-sm-3 col-form-label" style="color:white">please shoose some of this options*</label>
+
+               <label class="col-sm col-form-label" style="color:white">Trinkwasser?</label>
+               <div class="col-sm">
+                   <input type="hidden" name="trinkwasser" value="0"/>
+                   <input type="checkbox" name="trinkwasser" value="1"/>
+               </div>
+
+               <label class="col-sm col-form-label" style="color:white">Abwasser?</label>
+               <div class="col-sm">
+                   <input type="hidden" name="abwasser" value="0"/>
+                   <input type="checkbox" name="abwasser" value="1"/>
+               </div>
+               <label class="col-sm col-form-label" style="color:white">Toilettenentsorgung?</label>
+               <div class="col-sm">
+                   <input type="hidden" name="toilette" value="0"/>
+                   <input type="checkbox" name="toilette" value="1"/>
+               </div>
+               <label class="col-sm col-form-label" style="color:white">Strom?</label>
+               <div class="col-sm">
+                   <input type="hidden" name="strom" value="0"/>
+                   <input type="checkbox" name="strom" value="1"/>
+               </div>
+
+            <label class="col-sm col-form-label" style="color:white">Duschen?</label>
+            <div class="col-sm">
+                <input type="hidden" name="dusche" value="0"/>
+                <input type="checkbox" name="dusche" value="1"/>
+            </div>
+            <label class="col-sm col-form-label" style="color:white"> WC?</label>
+            <div class="col-sm">
+                <input type="hidden" name="wc" value="0"/>
+                <input type="checkbox" name="wc" value="1"/>
+            </div>
+            <label class="col-sm col-form-label" style="color:white">WiFi?</label>
+            <div class="col-sm">
+                <input type="hidden" name="wifi" value="0"/>
+                <input type="checkbox" name="wifi" value="1"/>
+            </div>
+
                <textarea name="" placeholder="Bericht" cols="30" rows="10"></textarea>
                <button>Speichern</button>
-
+               <a> Use my location</a>
+               <button id="takePic " class="btn btn-light">
+                   Bild aufnehmen
+               </button>
            </form>
+
         </div>
     </div>
 </section>

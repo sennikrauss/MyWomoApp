@@ -62,12 +62,16 @@
 <section class="containerform" id="create">
     <div class="containerbox">
         <div class="form-box">
-           <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload">
+           <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload" >
                <h1 id="newplace" style="color:white" >Add a new Place</h1>
-               <input type="text" placeholder ="Name*" name="Name" id="name">
-               <input type="text" placeholder ="Address*" name="Adresse" id="adresse">
-               <input placeholder="Postcode*" pattern="[0-9]{5}" name="Plz" id="plz" >
-               <input type="text" placeholder ="District*" name="Ort" id="ort">
+               <input type="text" placeholder ="Name*" name="Name" id="name" required>
+               <label for="Name" class="col-sm-3 col-form-label" style="color:white"> Hey! you can share your location : <a href="cards.html" id="location-btn">My location</a>
+               </label>
+               <div id="location-loader"></div>
+               <div id="map" class="map"></div>
+               <input type="text" placeholder ="Address*" name="Adresse" id="adresse" required>
+               <input placeholder="Postcode*" pattern="[0-9]{5}" name="Plz" id="plz" required>
+               <input type="text" placeholder ="District*" name="Ort" id="ort" required>
 
                    <select class="form-control" id="land" name="land" style="width: 100%" required>
                        <option value="" disabled selected>Select country</option>
@@ -112,10 +116,6 @@
             </div>
                <textarea name="" placeholder="Notes" cols="30" rows="10" name="Bemerkungen" id="bemerkungen"></textarea>
                <!--btn-->
-               <label for="Name" class="col-sm-3 col-form-label" style="color:white"> you can share your location : <a href="cards.html" id="location-btn">My location</a>
-               </label>
-               <div id="location-loader"></div>
-               <div id="map" class="map"></div>
                <!--take a pic
                <button type="button" class="blockbutton" id="choosePic" >bild hochladen</button>
                <button id="takePic " class="blockbutton" id="takePic" >Bild aufnehmen</button>

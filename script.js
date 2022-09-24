@@ -109,6 +109,7 @@ document.addEventListener("visibilitychange",() => {
    notification1 = new Notification("Come back please", {
    body: "Pleaaase",
    tag: "Come Back",
+   icon: "logoicon2.png"
    })
    } else{
      notification1.close()

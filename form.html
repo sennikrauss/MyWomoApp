@@ -1,11 +1,13 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formular</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!--<link href="https://fonts.googleapis.com/css?family=Quisand&display=swap" rel="stylesheet" />-->
 </head>
-
 <link rel="manifest" href="/manifest.json">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"/>
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,14 +20,6 @@
     padding: 4px 0 0 6px;
     border-color: #cccccc;
   }
-
-  #create #player, #create #canvas {
-    width: 512px;
-    max-width: 100%;
-    display: none;
-    margin: auto;
-  }
-
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -50,114 +44,140 @@
     display: none;
     margin-bottom: 1rem;
   }
+  #create video, #create canvas {
+    width: 512px;
+    max-width: 100%;
+    display: none;
+    margin: auto;
+  }
+  #image-picker-area #pick-image, #image-picker-area #player, #image-picker-area #clickPic{
+    display: none;
+  }
 </style>
 
-<body style="background-color: #ffddd6">
+
+<body>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-<div style="margin: 20px" id="create">
-  <h1 id="header">Add a new Place</h1>
-  <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload">
+<section class="containerform" id="create">
+  <div class="containerbox">
+    <div class="form-box">
+      <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload" >
+        <h1 id="header" style="color:white" >Add a new Place</h1>
+        <input type="text" placeholder ="Name*" name="Name" id="name" required>
+        <label for="Name" class="col-sm-3 col-form-label" style="color:white"> Hey! you can share your location : <a id="location-btn">My location</a>
+        </label>
+        <div id="location-loader"></div>
+        <div id="map" class="map"></div>
+        <input type="text" placeholder ="Address*" name="Adresse" id="adresse" required>
+        <input placeholder="Postcode*" pattern="[0-9]{5}" name="Plz" id="plz" required>
+        <input type="text" placeholder ="District*" name="Ort" id="ort" required>
 
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Name*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" name="Name" id="name" value=""></div>
-    </div>
-
-    <div class="form-group row" style="margin-right: auto; margin-left: auto">
-      <button class="btn btn-light" type="button" id="location-btn">Use my location</button>
-      <div id="location-loader"></div>
-    </div>
-
-    <div id="map" class="map"></div>
-
-
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Address*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" name="Adresse" id="adresse" value=""></div>
-    </div>
-
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Postcode*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" pattern="[0-9]{5}" name="Plz" id="plz" value=""></div>
-    </div>
-
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">District*</label>
-      <div class="col-sm-9"><input required type="text" class="form-control" name="Ort" id="ort" value=""></div>
-    </div>
-
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Country*</label>
-      <div class="col-sm-9">
         <select class="form-control" id="land" name="Land" style="width: 100%" required>
           <option value="" disabled selected>Select country</option>
-          <!--<option selected="selected" value="DE">Deutschland</option>-->
         </select>
-      </div>
-      <!--Länderauswahl mit Suche-->
-      <script type="text/javascript">
-        $("#land").select2({});
-      </script>
-    </div>
+        <!--Länderauswahl mit Suche-->
+        <script type="text/javascript">
+          $("#land").select2({});
+        </script>
+        <input type="number" name="Platzanzahl" id="platzanzahl" value="0" placeholder ="Number of spots">
 
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Number of spots</label>
-      <div class="col-sm-9"><input type="number" class="form-control" name="Platzanzahl" id="platzanzahl" value="0"></div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-sm col-form-label">Drinking water?</label>
-      <div class="col-sm">
-        <input type="hidden" name="Trinkwasser" value="0" />
-        <input type="checkbox" name="Trinkwasser" id="trinkwasser" value="1" />
-
-      </div>
-      <label class="col-sm col-form-label">Waste water?</label>
-      <div class="col-sm">
-        <input type="hidden" name="Abwasser" value="0"/>
-          <input type="checkbox" name="Abwasser" id="abwasser" value="1"/>
-      </div>
-      <label class="col-sm col-form-label">Grey water?</label>
-      <div class="col-sm">
-        <input type="hidden" name="Toilettenentsorgung" value="0"/>
+        <label class="col-sm col-form-label" style="color:white">Grey water?</label>
+        <div class="col-sm">
+          <input type="hidden" name="Toilettenentsorgung" value="0"/>
           <input type="checkbox" name="Toilettenentsorgung" id="toilette" value="1"/>
-      </div>
-      <label class="col-sm col-form-label">Electricity?</label>
-      <div class="col-sm">
-        <input type="hidden" name="Strom" value="0"/>
+        </div>
+
+        <label class="col-sm col-form-label" style="color:white">Drinking water?</label>
+        <div class="col-sm">
+          <input type="hidden" name="Trinkwasser" value="0" />
+          <input type="checkbox" name="Trinkwasser" id="trinkwasser" value="1" />
+
+        </div>
+
+        <label class="col-sm col-form-label" style="color:white">Waste water?</label>
+        <div class="col-sm">
+          <input type="hidden" name="Abwasser" value="0"/>
+          <input type="checkbox" name="Abwasser" id="abwasser" value="1"/>
+        </div>
+        <label class="col-sm col-form-label" style="color:white">Electricity?</label>
+        <div class="col-sm">
+          <input type="hidden" name="Strom" value="0"/>
           <input type="checkbox" name="Strom" id="strom" value="1"/>
-      </div>
-    </div>
+        </div>
 
-    <div class="form-group row">
-      <label class="col-sm col-form-label">Showers?</label>
-      <div class="col-sm">
-        <input type="hidden" name="Dusche" value="0"/>
+        <label class="col-sm col-form-label" style="color:white">Showers?</label>
+        <div class="col-sm">
+          <input type="hidden" name="Dusche" value="0"/>
           <input type="checkbox" name="Dusche" id="dusche" value="1"/>
-      </div>
-      <label class="col-sm col-form-label">WC?</label>
-      <div class="col-sm">
-        <input type="hidden" name="WC" value="0"/>
+        </div>
+        <label class="col-sm col-form-label" style="color:white"> WC?</label>
+        <div class="col-sm">
+          <input type="hidden" name="WC" value="0"/>
           <input type="checkbox" name="WC" id="wc" value="1"/>
-      </div>
-      <label class="col-sm col-form-label">WiFi?</label>
-      <div class="col-sm">
-        <input type="hidden" name="WiFi" value="0"/>
+        </div>
+        <label class="col-sm col-form-label" style="color:white">WiFi?</label>
+        <div class="col-sm">
+          <input type="hidden" name="WiFi" value="0"/>
           <input type="checkbox" name="WiFi" id="wifi" value="1"/>
-      </div>
-    </div>
+        </div>
+        <textarea placeholder="Notes" cols="30" rows="10" name="Bemerkungen" id="bemerkungen"></textarea>
+        <!--btn-->
+        <!--take a pic
+        <button type="button" class="blockbutton" id="choosePic" >bild hochladen</button>
+        <button id="takePic " class="blockbutton" id="takePic" >Bild aufnehmen</button>
+        <div class="form-group row" id="image-picker-area">
+            <label class="col-sm-3 col-form-label">Bild</label>
+            <div class="col-sm-3"><?php echo $bild;?> </div>
+            <div class="col-sm-6">
+                <div id="camera-area">
+                    <video id="player" autoplay></video>
+                    <canvas id="canvas" width="320px" height="240px"></canvas>
+                    <button class="btn btn-light" id="clickPic">Foto</button>
+                </div>
+                <div id="pick-image">
+                    <h6>Bild auswählen</h6>
+                    <input type="file" accept="image/jpg" name="userImage" class="inputFile form-control" id="pic">
+                </div>
+            </div>
+        </div>-->
 
-    <div class="form-group row">
-      <label for="Name" class="col-sm-3 col-form-label">Notes</label>
-      <div class="col-sm-9"><textarea class="form-control" name="Bemerkungen" id="bemerkungen"></textarea></div>
+        <div class="popup" id="popup-1">
+          <div class="overlay"></div>
+          <div class="popupcontent">
+            <div class="close-btn">&times;</div>
+            <button type="button" class="blockbutton" id="takePic">
+              Bild aufnehmen
+            </button>
+            <button type="button" class="blockbutton" id="choosePic">
+              Bild auswählen
+            </button>
+            <div class="form-group row" id="image-picker-area">
+              <div class="col-sm-3"> </div>
+              <div class="col-sm-6">
+                <div id="camera-area">
+                  <video id="player" autoplay></video>
+                  <canvas id="canvas" width="320px" height="240px"></canvas>
+                  <button class="btn btn-light" id="clickPic">Foto</button>
+                </div>
+                <div id="pick-image">
+                  <h6>Bild auswählen</h6>
+                  <input type="file" accept="image/jpg" name="userImage" class="inputFile form-control" id="pic">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-group">
+          <button type="submit" id="submit" name="Hinzufügen" class="btn btn-success">Add</button>
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='/cards.html'">Cancel</button>
+        </div>
+      </form>
     </div>
-
-    <button type="submit" id="submit" name="Hinzufügen" class="btn btn-success">Add</button>
-    <a href="cards.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
-  </form>
-</div>
+  </div>
+</section>
 </body>
 <script src="/idb.js"></script>
 <script src="indexedDB.js"></script>
 <script src="js/chooseLocation.js"></script>
+<script src="js/takeImage.js"></script>
 <script src="js/handleFormData.js"></script>

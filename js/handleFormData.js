@@ -1,4 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
+let file = null;
 
 fetch("json/countries.json")
   .then((res) => {
@@ -99,7 +100,9 @@ function editCard() {
   data.append("id", urlParams.get("id"));
   /* Bild kommt später in Form noch hinzu --> erstmal nur dummy null: */
   data.append("imageType", "null");
-  data.append("imageData", "null");
+  if (file !== null) {
+    data.append("imageData", file);
+  }
 
   fetch("backend/updateCard.php", {
     method: "POST",
@@ -146,11 +149,17 @@ function addNewCard() {
   let form = document.getElementById("form")
   let data = new FormData(form);
   let userId = getCookie("userIdForm");
+  if (file == null && data.get("userImage").size === 0) {
+    alert('Erst Foto aufnehmen!')
+    return false;
+  }
   data.append("userId", userId);
   data.append("addNewCard", "ok");
-  /* Bild kommt später in Form noch hinzu --> erstmal nur dummy null: */
   data.append("imageType", "null");
-  data.append("imageData", "null");
+
+  if (file !== null) {
+    data.append("imageData", file);
+  }
 
   sendDataToBackend(data);
   return false;

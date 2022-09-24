@@ -2,6 +2,7 @@ let takePicBtn = document.querySelector('#takePic');
 let videoPlayer = document.querySelector('#player');
 let canvasElement = document.querySelector('#canvas');
 let clickForPic = document.querySelector('#clickPic');
+let imageURI = '';
 let imagePickerArea = document.querySelector('#image-picker-area');
 let cameraArea = document.querySelector('#camera-area');
 let choosePicArea = document.querySelector('#pick-image');
@@ -62,14 +63,23 @@ clickForPic.addEventListener('click', event => {
     track.stop();
   })
 
-  //const imageURI = canvasElement.toDataURL("image/jpg");
+  imageURI = canvasElement.toDataURL("image/jpg");
 
-  canvasElement.toBlob( (blob) => {
+  fetch(imageURI)
+    .then(res => {
+      return res.blob()
+    })
+    .then(blob => {
+      file = new File([blob], "userImage", { type: "image/jpg" })
+      console.log('file', file)
+    })
+
+  /*canvasElement.toBlob( (blob) => {
     const file = new File( [ blob ], "mycanvas.png" );
     const dT = new DataTransfer();
     dT.items.add( file );
     inputPic.files = dT.files;
-  });
+  });*/
 });
 
 

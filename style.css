@@ -75,11 +75,11 @@ header ul li a {
  font-size: 4em;
  line-height: 1.4em;
  font-weigth: 500;
- padding-top: 200px;
+ padding-top: 100px;
 }
 .content .textBox h2 span
 {
-  color: #FAAFA0;
+  color: #EE614A;
   font-size: 1.2em;
   font-weigth: 900;
 }
@@ -154,7 +154,7 @@ margin-left: -5000%;
  .sci li a
  {
    display: inline-block;
-   margin: 5px 0;
+   margin: 0.5px 0;
    transform: scale(0.6);
  }
 
@@ -800,7 +800,7 @@ form.sign-in-form {
 .containerform{
  width: 100%;
  min-height: 100vh;
- background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(https://images.t-online.de/2022/08/I1Vgvnol65vX/839x99:1523x857/fit-in/1800x0/zu-hause-in-der-natur-urlaub-in-wohnwagen-und-wohnmobil-steht-hoch-im-kurs.jpg);
+ background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(https://image.stern.de/32619048/t/Gr/v2/w1440/r1.7778/-/nachhaltig-campen.jpg);
  background-size: cover;
  background-repeat: no-repeat;
  background-position: center center;

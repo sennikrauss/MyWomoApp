@@ -67,7 +67,7 @@
       <form name="addPlace" method="post" enctype="multipart/form-data" onsubmit="return addNewCard();" id="form" class="frmImageUpload" >
         <h1 id="header" style="color:white" >Add a new Place</h1>
         <input type="text" placeholder ="Name*" name="Name" id="name" required>
-        <label for="Name" class="col-sm-3 col-form-label" style="color:white"> Hey! you can also share your location : <a id="location-btn" style="color: #F8B7AD">My location</a>
+        <label for="Name" class="col-sm-3 col-form-label" style="color:white"> Hey! you can also share your location : <a id="location-btn" style="color: #F8B7AD">Use my location</a>
         </label>
         <div id="location-loader"></div>
         <div id="map" class="map"></div>
@@ -76,7 +76,7 @@
         <input type="text" placeholder ="District*" name="Ort" id="ort" required>
         <input type="number" name="Platzanzahl" id="platzanzahl" value="0" placeholder ="Number of spots">
 
-        <select class="form-control" id="land" name="Land" style="width: 100%" required s>
+        <select class="form-control" id="land" name="Land" style="width: 100%" required>
           <option value="" disabled selected>Select country</option>
         </select>
         <!--Länderauswahl mit Suche-->

@@ -236,7 +236,7 @@ margin-left: -5000%;
    width: 30px;
    height: 30px;
    cursor: pointer;
-   background: url(menu.png);
+   background: url(icons/pics/menu.png);
    background-size: 30px;
    background-position: center;
    background-repeat: no-repeat;
@@ -249,7 +249,7 @@ margin-left: -5000%;
   {
   position: fixed;
   right: 20px;
-  background: url(close.png);
+  background: url(icons/pics/close.png);
   background-size: 25px;
   background-position: center;
   background-repeat: no-repeat;

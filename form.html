@@ -55,7 +55,17 @@
   }
 </style>
 
+<script defer>
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
 
+  if (!getCookie("userIdForm")) {
+    window.location.href = "/403-page.html"
+  }
+</script>
 <body>
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <section class="containerform" id="create">
@@ -176,8 +186,8 @@
   </div>
 </section>
 </body>
-<script src="/idb.js"></script>
-<script src="indexedDB.js"></script>
+<script src="/js/idb.js"></script>
+<script src="js/indexedDB.js"></script>
 <script src="js/chooseLocation.js"></script>
 <script src="js/takeImage.js"></script>
 <script src="js/handleFormData.js"></script>

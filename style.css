@@ -127,7 +127,7 @@ display: inline-block;
 margin: 0 20px;
 cursor: pointer;
 transition : 0.5s;
-margin-bottom: 60px;
+margin-bottom: -14px;
 margin-left: 40px;
 }
 
@@ -225,6 +225,8 @@ overflow: auto;
   }
   .thumb{
    margin-left: -25px;
+   margin-top: -50px;
+
   }
    .circle {
     clip-path: circle(400px at center bottom);
@@ -232,13 +234,11 @@ overflow: auto;
 
    .sci{
     right: 0px;
-    transform: translateY(5%);
+    transform: translateY(80%);
     width: 50px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    background-color: #EE614A;
+    background-color: #F8B7AD;
    }
    .sci li a
     {
@@ -676,10 +676,10 @@ form.sign-in-form {
 
 .about .test img{
   height: auto;
-  width: 400px;
+  width: 100%;
   max-width: 100%;
   margin-left: -100px;
-  margin-top: 100px;
+  margin-top: 30px;
 
 }
 

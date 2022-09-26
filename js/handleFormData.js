@@ -174,6 +174,14 @@ function sendDataToBackend(data) {
   }).then(response => {
     console.log(response);
     if (response === "successfully inserted data"){
+      Notification.requestPermission().then(perm => {
+        if (perm === "granted"){
+          new Notification("Inserted successfully!",{
+            body:"You successfully inserted a place!",
+            icon: "logoicon2.png"
+          })
+        }
+      })
       window.location.href = "/cards.html";
     }
   }).catch(error => {

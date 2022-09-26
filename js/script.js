@@ -78,10 +78,12 @@ if (logoutBtn && logoutBtn.style.display!=="none") {
     async function deleteCookies() {
       let name1 = "user";
       let name2 = "userId";
+      let name3 = "userIdForm";
       document.cookie = name1 + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
       document.cookie = name1 + '=; path=/cards.html; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
       document.cookie = name2 + '=; path=/backend/cards.php; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
       document.cookie = name2 + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+      document.cookie = name3 + '=; path=/form.html; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     }
 
     deleteCookies().then(() => {
@@ -96,7 +98,7 @@ if (button) {
       if (perm === "granted"){
         new Notification("Yes subscribed!",{
           body:"You successfully subscribed to our Notification service!",
-          icon: "logoicon2.png"
+          icon: "/icons/pics/logoicon2.png"
         })
       }
     })
@@ -109,7 +111,7 @@ document.addEventListener("visibilitychange",() => {
    notification1 = new Notification("Come back please", {
    body: "Pleaaase",
    tag: "Come Back",
-   icon: "logoicon2.png"
+   icon: "/icons/pics/logoicon2.png"
    })
    } else{
      notification1.close()
@@ -126,7 +128,7 @@ document.addEventListener("visibilitychange",() => {
     notification = new Notification("Come back pleaaase", {
        body: "you have been gone for" + Math.round( (new Date()-leaveDate) /1000) + " seconds.",
        tag: "Come Back",
-       icon: "logoicon2.png"
+       icon: "/icons/pics/logoicon2.png"
        })
    },10000)
    } else{

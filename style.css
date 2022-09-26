@@ -253,7 +253,7 @@ overflow: auto;
    width: 30px;
    height: 30px;
    cursor: pointer;
-   background: url(menu.png);
+   background: url(icons/pics/menu.png);
    background-size: 30px;
    background-position: center;
    background-repeat: no-repeat;
@@ -266,7 +266,7 @@ overflow: auto;
   {
   position: fixed;
   right: 20px;
-  background: url(close.png);
+  background: url(icons/pics/close.png);
   background-size: 25px;
   background-position: center;
   background-repeat: no-repeat;

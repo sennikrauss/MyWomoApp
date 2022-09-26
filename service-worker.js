@@ -1,5 +1,5 @@
-importScripts('/idb.js');
-importScripts('/indexedDB.js');
+importScripts('/js/idb.js');
+importScripts('/js/indexedDB.js');
 
 const CACHE_VERSION = 1;
 const DOMAIN_BACKEND = 'http://localhost:4200/backend';
@@ -9,17 +9,17 @@ const STATIC_FILES = [
   "/",
   "/index.html",
   "/style.css",
-  "/script.js",
+  "/js/script.js",
   "/cards.html",
   "/about-us.html",
-  "/app.js",
-  "/fillCards.js",
+  "/js/app.js",
+  "/js/fillCards.js",
   "/login.html",
-  "/login-signin.js",
-  "/search.js",
+  "/js/login-signin.js",
+  "/js/search.js",
   "/403-page.html",
-  "/idb.js",
-  "/indexedDB.js",
+  "/js/idb.js",
+  "/js/indexedDB.js",
   "/form.html",
   "/js/chooseLocation.js",
   "/js/handleFormData.js",

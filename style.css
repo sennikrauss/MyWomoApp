@@ -61,7 +61,7 @@ header ul li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 
@@ -69,19 +69,21 @@ header ul li a {
 {
   position: relative;
   max-width: 600px;
+  margin-top: -50px;
+
 }
 .content .textBox h2{
  color: #333;
  font-size: 4em;
  line-height: 1.4em;
- font-weigth: 500;
- padding-top: 200px;
+ font-weight: 500;
+ padding-top: 100px;
 }
 .content .textBox h2 span
 {
-  color: #FAAFA0;
+  color: #EE614A;
   font-size: 1.2em;
-  font-weigth: 900;
+  font-weight: 700;
 }
 .content .textBox p {
   color: #333;
@@ -104,11 +106,12 @@ header ul li a {
     width: 600px;
     display: flex;
     justify-content: flex-end;
-    padding-right: 50px;
+    padding-right: 70px;
     margin-top: 50px;
  }
 .content .imBox img{
   max-width: 340px;
+
 }
 
 .thumb{
@@ -124,8 +127,8 @@ display: inline-block;
 margin: 0 20px;
 cursor: pointer;
 transition : 0.5s;
-margin-bottom: 60px
-margin-left: -5000%;
+margin-bottom: -14px;
+margin-left: 40px;
 }
 
 .thumb li:hover
@@ -139,8 +142,8 @@ margin-left: -5000%;
 .sci{
     position: absolute;
     top: 50%;
-    right: 30px;
-    transform: translateY(-50%);
+    right: 0px;
+    transform: translateX(100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,11 +156,9 @@ margin-left: -5000%;
  .sci li a
  {
    display: inline-block;
-   margin: 5px 0;
+   margin: 0.5px 0;
    transform: scale(0.6);
-   margin-right: -60px;
  }
-
 
 .circle{
   position: absolute;
@@ -169,11 +170,18 @@ margin-left: -5000%;
   clip-path: circle(550px at right 800px);
 }
 
+#searchfield{
+margin: 20px;
+overflow: auto;
+}
+
 /**Responsive landingpage**/
 @media (max-width: 991px)
 {
+
   header{
    padding:20px;
+   margin-top: -50px;
   }
   header.logo{
   max-width: 60px;
@@ -192,7 +200,7 @@ margin-left: -5000%;
   .content
   {
    flex-direction: column;
-   margin-top: 100px;
+   margin-top: 70px;
   }
   .content .textBox h2
   {
@@ -215,20 +223,29 @@ margin-left: -5000%;
   .thumb li img{
    max-width: 40px;
   }
+  .thumb{
+   margin-left: -25px;
+   margin-top: -50px;
+
+  }
    .circle {
     clip-path: circle(400px at center bottom);
    }
-  .sci li
-   {
-     list-style: none;
-     margin-top: -50px;
+
+   .sci{
+    right: 0px;
+    transform: translateY(80%);
+    width: 50px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #F8B7AD;
    }
-    .sci li a
+   .sci li a
     {
       display: inline-block;
-      margin: 1px 200px;
+      margin-bottom: -25px;
       transform: scale(0.6);
-      margin-right: -75px;
+      padding-top: 10px;
     }
 
   .toggle{
@@ -245,7 +262,7 @@ margin-left: -5000%;
 
   }
 
-  .toggle .active
+  .toggle.active
   {
   position: fixed;
   right: 20px;
@@ -268,10 +285,11 @@ margin-left: -5000%;
    background: #fff;
    z-index:10;
   }
+#searchfield{
+ margin-top: -50px;
 }
 
-
-
+}
 
 /**login page*/
 
@@ -658,10 +676,10 @@ form.sign-in-form {
 
 .about .test img{
   height: auto;
-  width: 400px;
+  width: 100%;
   max-width: 100%;
   margin-left: -100px;
-  margin-top: 100px;
+  margin-top: 30px;
 
 }
 
@@ -793,7 +811,7 @@ form.sign-in-form {
 .containerform{
  width: 100%;
  min-height: 100vh;
- background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(https://images.t-online.de/2022/08/I1Vgvnol65vX/839x99:1523x857/fit-in/1800x0/zu-hause-in-der-natur-urlaub-in-wohnwagen-und-wohnmobil-steht-hoch-im-kurs.jpg);
+ background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(https://image.stern.de/32619048/t/Gr/v2/w1440/r1.7778/-/nachhaltig-campen.jpg);
  background-size: cover;
  background-repeat: no-repeat;
  background-position: center center;
@@ -801,11 +819,11 @@ form.sign-in-form {
 }
 
 .containerbox{
- width: 92%;
+ width: 100%;
  margin: 0 auto;
 }
 .containerform .form-box{
- max-width: 700px;
+ max-width: 780px;
  background: rgba(0,0,0,0.75);
  padding: 10px;
  margin: 0 auto;
@@ -883,33 +901,6 @@ h1{padding-bottom: 20px;
   background-color: #ffd8d8;
   color: black;
 }
-
-
-/**
-input [type="text"]{
-  float: right;
-}
-
-.form-box form input [type="location"]{
-  background-color: #fa732a;
-  color: #fff;
-  font-size: 18px;
-}
-
-.form-box form input [type="location"]:hover{
- background-color: #000;
- transition: 0.3s ease;
-
-}
-
-input[type="submit"] {
-  background-color: white;
-  width: 200px;
-  border: 3px solid #c9c9c9;
-  font-size: 24pt;
-  margin: 5px;
-  color: #969696;
-}**/
 
 
 /**form responsive**/

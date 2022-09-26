@@ -33,10 +33,6 @@
 <body id="body">
     <header>
         <a href="/index.html"><img src="logo1.png" class="logo"></a>
-        <div class="input-field">
-            <i class="fa fa-search"></i>
-            <input type="text" placeholder="Search" onkeyup=searchFunction("search") id="search">
-        </div>
         <div class="toggle" onclick="toggleMenu();"></div>
         <ul class="navigation">
             <li> <a href="/cards.html" id="home">home</a></li>
@@ -47,6 +43,10 @@
     </header>
     <div class="loginsearch">
         <!--<h1 style="font-family: 'pacifico', cursive; font-size: 3.8rem;">Hello Womos!</h1>-->
+    </div>
+    <div class="input-field" id="searchfield">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search" onkeyup=searchFunction("search") id="search">
     </div>
     <div style="margin: 20px; overflow: auto;">
         <div class="">

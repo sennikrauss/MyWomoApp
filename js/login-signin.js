@@ -24,6 +24,14 @@ function sendLoginData(){
   }).then((response) => {
     console.log(response)
     if (response !== "not valid user!") {
+      Notification.requestPermission().then(perm => {
+        if (perm === "granted"){
+          new Notification("Logged in!",{
+            body:"You successfully logged in!",
+            icon: "logoicon2.png"
+          })
+        }
+      })
       window.location.href= "/";
     }
   }).catch((error) => {

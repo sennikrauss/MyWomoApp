@@ -222,11 +222,10 @@ overflow: auto;
       }
   .thumb li img{
    max-width: 40px;
+   margin-top: -100px;
   }
   .thumb{
-   margin-left: -25px;
-   margin-top: -50px;
-
+   margin-left: -20px;
   }
    .circle {
     clip-path: circle(400px at center bottom);
@@ -287,6 +286,7 @@ overflow: auto;
   }
 #searchfield{
  margin-top: -50px;
+ width:55%;
 }
 
 }
@@ -534,7 +534,7 @@ form.sign-in-form {
   pointer-events: all;
 }
 
-
+/**login responsive**/
 @media (max-width: 870px) {
   .container {
     min-height: 800px;
@@ -543,7 +543,7 @@ form.sign-in-form {
   .signin-signup {
     width: 100%;
     top: 95%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -130%);
     transition: 1s 0.8s ease-in-out;
   }
 
@@ -554,7 +554,7 @@ form.sign-in-form {
 
   .panels-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 5fr 5fr 5fr;
   }
 
   .panel {
@@ -676,10 +676,10 @@ form.sign-in-form {
 
 .about .test img{
   height: auto;
-  width: 100%;
+  width: 400px;
   max-width: 100%;
-  margin-left: -100px;
-  margin-top: 30px;
+  margin-left: -10px;
+  margin-top: 100px;
 
 }
 
@@ -723,12 +723,12 @@ form.sign-in-form {
  margin-bottom: 45px;
 
 }
-
+/**about us responsiv**/
 @media screen and (max-width: 1180px){
   .about{
     width: 100%;
     height: auto;
-    padding: 70px 0;
+    padding: 10px 0;
   }
 }
 
@@ -740,7 +740,7 @@ form.sign-in-form {
   .text h1{
     font-size: 60px;
     margin-bottom: 25px;
-    margin-top: -50px;
+    margin-top: -100px;
 
   }
 

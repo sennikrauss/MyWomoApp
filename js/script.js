@@ -1,12 +1,10 @@
 const CACHE_VERSION = 1;
 let installEvent = null;
 
-let installButton2 = document.getElementById("install2");
 let installButton = document.getElementById("install");
 let logoutBtn = document.getElementById("logoutBtn");
 let homeBtn = document.getElementById("home");
 let loginBtn = document.getElementById("loginBtn");
-let installButton3 = document.getElementById("install3");
 let button = document.getElementById("enablebutton");
 
 function getCookie(name) {
@@ -16,9 +14,8 @@ function getCookie(name) {
 }
 
 if (getCookie("userId")){
-  if (installButton && installButton2) {
+  if (installButton) {
     installButton.style.display = "initial";
-    installButton2.style.display = "initial";
   }
   if (logoutBtn) {
     logoutBtn.style.display = "initial";
@@ -33,44 +30,19 @@ if (getCookie("userId")){
   }
 }
 
-if (installButton && installButton2){
-  if(installButton.style.display !=="none" && installButton2.style.display !== "none") {
+if (installButton){
+  if(installButton.style.display !=="none") {
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       console.log("Ready to install...");
       installEvent = e;
     });
 
-    if (installEvent === null) {
-      installButton.style.display = "none";
-      installButton2.style.display = "none";
-    }
-
     installButton.addEventListener("click", function() {
       installEvent.prompt();
     });
-
-    installButton2.addEventListener("click", function() {
-      installEvent.prompt();
-    });
   }
 
-}
-
-if (installButton3 && installButton3.style.display !== "none") {
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    console.log("Ready to install...");
-    installEvent = e;
-  });
-
-  if (installEvent === null) {
-    installButton3.style.display = "none";
-  }
-
-  installButton3.addEventListener("click", function() {
-    installEvent.prompt();
-  });
 }
 
 if (logoutBtn && logoutBtn.style.display!=="none") {
